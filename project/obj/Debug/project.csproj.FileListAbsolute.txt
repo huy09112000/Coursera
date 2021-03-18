@@ -77,3 +77,12 @@ D:\homework\major\c#_On_Class\project\SE1414-C--Webform-Team3\project\obj\Debug\
 D:\homework\major\c#_On_Class\project\SE1414-C--Webform-Team3\project\obj\Debug\project.csproj.CopyComplete
 D:\homework\major\c#_On_Class\project\SE1414-C--Webform-Team3\project\obj\Debug\project.dll
 D:\homework\major\c#_On_Class\project\SE1414-C--Webform-Team3\project\obj\Debug\project.pdb
+D:\homework\major\c#_On_Class\project\SE1414-C--Webform-Team3\project\bin\EntityFramework.dll
+D:\homework\major\c#_On_Class\project\SE1414-C--Webform-Team3\project\bin\EntityFramework.SqlServer.dll
+D:\homework\major\c#_On_Class\project\SE1414-C--Webform-Team3\project\bin\EntityFramework.xml
+D:\homework\major\c#_On_Class\project\SE1414-C--Webform-Team3\project\bin\EntityFramework.SqlServer.xml
+D:\homework\major\c#_On_Class\project\SE1414-C--Webform-Team3\project\obj\Debug\project.Migrations.test.resources
+D:\homework\major\c#_On_Class\project\SE1414-C--Webform-Team3\project\obj\Debug\project.csproj.GenerateResource.cache
+D:\homework\major\c#_On_Class\project\SE1414-C--Webform-Team3\project\obj\Debug\project.Migrations.test1.resources
+D:\homework\major\c#_On_Class\project\SE1414-C--Webform-Team3\project\obj\Debug\project.Migrations.test2.resources
+D:\homework\major\c#_On_Class\project\SE1414-C--Webform-Team3\project\obj\Debug\project.Migrations.databasefirst.resources
