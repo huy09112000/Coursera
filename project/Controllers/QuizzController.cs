@@ -66,6 +66,10 @@ namespace project.Controllers
                 return View(model);
             }
         }
+        public ActionResult Lesson(int subjectId, int lessonId)
+        {
+            return View();
+        }
         [HttpGet]
         public ActionResult ListSubject(string id, int pageNum)
         {

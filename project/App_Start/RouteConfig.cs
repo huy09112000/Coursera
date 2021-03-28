@@ -40,6 +40,12 @@ namespace project
                 defaults: new {Controller = "Quizz", Action = "Subject"},
                 constraints:new {courseId =@"\d+", subjectId = @"\d+"}  
                 );
+            routes.MapRoute(
+                name:"Lesson",
+                url:"quizz/lesson/{subjectId}/{lessonId}",
+                defaults: new {Controller="Quizz",Action= "Lesson" },
+                constraints: new { subjectId = @"\d+", lessonId = @"\d+"}
+                );
         }
     }
 }

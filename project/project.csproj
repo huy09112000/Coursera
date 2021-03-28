@@ -192,6 +192,10 @@
     <Compile Include="Migrations\202103280819094_empty.Designer.cs">
       <DependentUpon>202103280819094_empty.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103281655493_changeQuizz.cs" />
+    <Compile Include="Migrations\202103281655493_changeQuizz.Designer.cs">
+      <DependentUpon>202103281655493_changeQuizz.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Answer.cs" />
     <Compile Include="Models\Course.cs" />
@@ -379,6 +383,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Quizz\Course.cshtml" />
     <Content Include="Views\Quizz\Subject.cshtml" />
+    <Content Include="Views\Quizz\Lesson.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -412,6 +417,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103280819094_empty.resx">
       <DependentUpon>202103280819094_empty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103281655493_changeQuizz.resx">
+      <DependentUpon>202103281655493_changeQuizz.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -1,8 +1,8 @@
 ﻿
 
 function hideOnClick(ele, id) {
-    let s = '#'+id + 'c';
-    if ($(s).hasClass("toLeftTransition")||$(s).hasClass("hide")) {
+    let s = '#' + id + 'c';
+    if ($(s).hasClass("toLeftTransition") || $(s).hasClass("hide")) {
         return;
     }
     let code = id;
@@ -10,14 +10,22 @@ function hideOnClick(ele, id) {
     let topPos = ele.offsetTop - 50;
     ele.style.left = leftPos + 'px';
     ele.style.top = topPos + 'px';
-    ele.style.position = 'absolute';
-    $(".list__item").toggleClass("hide");
+    //ele.style.position = 'absolute';
+    $('.list__item').one("transitionend webkitTransitionEnd oTransitionEnd", function () {
+        if ($(s).hasClass("hide")) {
+            //alert('hie');
+            ele.classList.remove("hide");
+        } else {
+            ele.classList.add("toLeftTransition");
+        }
+    });
+    $(".list__item").addClass("hide", 1000);
     $(".list__item").removeClass("up");
 
-    ele.classList.remove("hide");
-    setTimeout(function () {
-        ele.classList.add("toLeftTransition");
-    }, 1200);
+    //ele.classList.remove("hide");
+    //setTimeout(function () {
+    //    ele.classList.add("toLeftTransition");
+    //}, 2000);
 
     $(".list__item").on("click", function (e) {
         e.preventDefault();
@@ -28,10 +36,11 @@ function hideOnClick(ele, id) {
         .done(function () { })
         .fail(function (jqxhr, setting, ex) { console.log(ex) });
 }
+
 function addSubject(res) {
     let data = res.data;
     let courseId = res.courseId;
-    let list=``;
+    let list = ``;
     for (var obj of data) {
         list += `  <div class="item__subject" onclick="window.location.href='/quizz/subject/${courseId}/${obj.Id}'">
             <div class="subject__header"><h1>${obj.Name}</h1></div>
@@ -47,6 +56,37 @@ function addSubject(res) {
         $('.item__subject').toggleClass('grow');
     });
     $('#lstsubject').toggleClass('show');
+}
+
+//subject section
+//jQuery(function ($) {
+//    $('#lstsubject').on('scroll', function () {
+
+//        $('#lstsubject').stop().animate({
+//            scrollTop: $('#lstsubject').scrollTop() - (200)
+//        });
+//    })
+//});
+
+function wheel(event) {
+    //var delta = 0;
+    //if (event.wheelDelta) delta = event.wheelDelta / 120;
+    //else if (event.detail) delta = -event.detail / 3;
+    //handle(delta);
+    //if (event.preventDefault) event.preventDefault();
+    //event.returnValue = false;
+}
+function handle(delta) {
+    var time = 1000;
+    var distance = 56;
+    console.log(1, $('#lstsubject').scrollTop());
+    console.log(2, $('#lstsubject').children());
+    if ($('#lstsubject').scrollHeight - $('#lstsubject').scrollTop() == $('#lstsubject').outerHeight()) {
+        console.log("bottom");
+    }
+    $('#lstsubject').stop().animate({
+        scrollTop: $('#lstsubject').scrollTop() - (distance * delta)
+    });
 }
 
 

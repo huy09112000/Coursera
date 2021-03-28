@@ -32,7 +32,7 @@
                         <div class="star__active" style="width:@subject.Rate%;"></div>
                         <img src="@Url.Content("~/Assets/images/rating-star.png")" />
                     </div>
-                    <div class="subject__des__content fade">
+                    <div class="subject__des__content">
                         <p>
                             @subject.Describtion
                         </p>
@@ -41,10 +41,23 @@
             </div>
         </div>
         <div class="list__container">
-            @foreach (var item in Model.lstLesson)
-            {
-
-            }
+            <ul class="lst__lesson" id="lstsubject" onmousewheel="wheel(event, this)">
+                @foreach (LessonDTO item in Model.lstLesson)
+                {
+                    <li class="item__lesson" tooltip="@item.Describtion"><a href="@Url.Content("~/quizz/lesson/"+item.CurentSubjectId+"/"+item.Id)"><span>@item.Name</span></a></li>
+                }
+                <li class="item__lesson"><a href="#"><span>Name</span></a></li>
+                <li class="item__lesson"><a href="#"><span>Name</span></a></li>
+                <li class="item__lesson"><a href="#"><span>Name</span></a></li>
+                <li class="item__lesson"><a href="#"><span>Name</span></a></li>
+                <li class="item__lesson"><a href="#"><span>Name</span></a></li>
+                <li class="item__lesson"><a href="#"><span>Name</span></a></li>
+                <li class="item__lesson"><a href="#"><span>Name</span></a></li>
+                <li class="item__lesson"><a href="#"><span>Name</span></a></li>
+                <li class="item__lesson"><a href="#"><span>Name</span></a></li>
+                <li class="item__lesson"><a href="#"><span>Name</span></a></li>
+                <li class="item__lesson"><a href="#"><span>Name</span></a></li>
+            </ul>
         </div>
     </div>
 

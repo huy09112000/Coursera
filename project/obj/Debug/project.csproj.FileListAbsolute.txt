@@ -196,3 +196,5 @@ D:\homework\major\c#_On_Class\project\SE1414-C--Webform-Team3\project\bin\System
 D:\homework\major\c#_On_Class\project\SE1414-C--Webform-Team3\project\bin\System.Numerics.Vectors.xml
 D:\homework\major\c#_On_Class\project\SE1414-C--Webform-Team3\project\bin\System.Runtime.CompilerServices.Unsafe.xml
 D:\homework\major\c#_On_Class\project\SE1414-C--Webform-Team3\project\obj\Debug\project.Migrations.empty.resources
+D:\homework\major\c#_On_Class\project\SE1414-C--Webform-Team3\project\obj\Debug\project.csprojAssemblyReference.cache
+D:\homework\major\c#_On_Class\project\SE1414-C--Webform-Team3\project\obj\Debug\project.Migrations.changeQuizz.resources
