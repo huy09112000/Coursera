@@ -28,7 +28,7 @@ namespace project.Models
         public string Code { get; set; }
 
         public string Image { get; set; }
-        public int? rate { get; set; }
+        public double? rate { get; set; }
         public int? total_rate { get; set; }
 
         public virtual ICollection<UserInfor> UserInfors { get; set; }
