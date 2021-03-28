@@ -1,0 +1,57 @@
+﻿@*@using MultipleModelInOneView;*@
+@using project.Models.DTO
+@model dynamic
+@{
+    ViewBag.Title = "Subject";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    SubjectDTO subject = Model.subjectDTO;
+    List<LessonDTO> lst = Model.lstLesson;
+}
+@Styles.Render("~/Assets/admin/quizz/css/style.css")
+@Styles.Render("~/Assets/admin/quizz/css/subject.css")
+
+<div class="list_background">
+    <div class="title__page" onclick="window.location.href = '@Url.Content("~/Quizz/Subject/"+subject.CurrentCourseId+"/"+subject.Id)'">
+        <div class="title__arrow right"></div>
+        <h2>Subject</h2>
+    </div>
+    <div class="subject__box">
+        <div class="subject__detail">
+            <div class="subject__title">
+                <h1>@subject.Name</h1>
+            </div>
+            <div class="subject__intro">
+                <div class="subject__video">
+                    <img src="@Url.Content(subject.Image)"/>
+                </div>
+                <div class="subject__des">
+                    <div class="subject__code">
+                        <p>Code: @subject.Code</p>
+                    </div>
+                    <div class="rating__star">
+                        <div class="star__active" style="width:@subject.Rate%;"></div>
+                        <img src="@Url.Content("~/Assets/images/rating-star.png")" />
+                    </div>
+                    <div class="subject__des__content fade">
+                        <p>
+                            @subject.Describtion
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="list__container">
+            @foreach (var item in Model.lstLesson)
+            {
+
+            }
+        </div>
+    </div>
+
+
+</div>
+
+
+@Scripts.Render("~/Assets/admin/quizz/js/util.js")
+
+

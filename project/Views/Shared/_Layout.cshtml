@@ -14,23 +14,30 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap" rel="stylesheet">
+
     <!-- Site Icons -->
     <link rel="shortcut icon" href="~/Assets/images/favicon.ico" type="image/x-icon" />
     <link rel="apple-touch-icon" href="~/Assets/images/apple-touch-icon.png">
     <!-- Bootstrap CSS -->
-    <link href="~/Assets/admin/dist/css/bootstrap.min.css" rel="stylesheet" />
+    @Styles.Render("~/Assets/admin/dist/css/bootstrap.min.css")
     <!-- Site CSS -->
-    <link rel="stylesheet" href="~/Assets/admin/dist/css/style.css">
+    @Styles.Render("~/Assets/admin/dist/css/style.css")
+
     <!-- ALL VERSION CSS -->
-    <link rel="stylesheet" href="~/Assets/admin/dist/css/versions.css">
+    @Styles.Render("~/Assets/admin/dist/css/versions.css")
+
     <!-- Responsive CSS -->
-    <link rel="stylesheet" href="~/Assets/admin/dist/css/responsive.css">
+    @Styles.Render("~/Assets/admin/dist/css/responsive.css")
+
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="~/Assets/admin/dist/css/custom.css">
-    <link href="~/Assets/admin/dist/css/font-awesome.css" rel="stylesheet" />
-    <link href="~/Assets/admin/dist/css/font-awesome.min.css" rel="stylesheet" />
+    @Styles.Render("~/Assets/admin/dist/css/custom.css")
+    @Styles.Render("~/Assets/admin/dist/css/font-awesome.css")
+    @Styles.Render("~/Assets/admin/dist/css/font-awesome.min.css")
+
     <!-- Modernizer for Portfolio -->
-    <script src="~/Assets/admin/dist/js/modernizer.js"></script>
+    @Scripts.Render("~/Assets/admin/dist/js/modernizer.js")
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -129,7 +136,8 @@
     <header class="top-navbar">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-                <a class="navbar-brand" href="index.html">
+                @*@Html.ActionLink("<img src=\"~/ Assets / images / logo.png\" />","Index","Home",null,new {@class = "navbar-brand" })*@
+                <a class="navbar-brand" href="@Url.Action("Index","Home")">
 
                     <img src="~/Assets/images/logo.png" alt="" />
                 </a>
@@ -140,8 +148,8 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbars-host">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                        <li class="nav-item active"><a class="nav-link" href="about.html">About Us</a></li>
+                        <li class="nav-item"><a class="nav-link" href="@Url.Action("Index","Home")">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Course </a>
                             <div class="dropdown-menu" aria-labelledby="dropdown-a">
@@ -159,6 +167,7 @@
                         </li>
                         <li class="nav-item"><a class="nav-link" href="teachers.html">Teachers</a></li>
                         <li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>
+                        <li class="nav-item"><a class="nav-link" href="@Url.Action("Course","Quizz")">Test</a></li>
                         <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
@@ -169,12 +178,11 @@
         </nav>
     </header>
     <!-- End header -->
-
-    <div class="all-title-box">
-        <div class="container text-center">
-            <h1>About Us<span class="m_1">Lorem Ipsum dolroin gravida nibh vel velit.</span></h1>
-        </div>
-    </div>
+    @*<div class="all-title-box">
+            <div class="container text-center">
+                <h1>About Us<span class="m_1">Lorem Ipsum dolroin gravida nibh vel velit.</span></h1>
+            </div>
+        </div>*@
 
     <div id="overviews" class="section lb">
         <!-- content of each page nested in heare -->
@@ -196,11 +204,11 @@
                         <p> Integer rutrum ligula eu dignissim laoreet. Pellentesque venenatis nibh sed tellus faucibus bibendum. Sed fermentum est vitae rhoncus molestie. Cum sociis natoque penatibus et magnis dis montes.</p>
                         <div class="footer-right">
                             <ul class="footer-links-soi">
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-github"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                                <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                                <li><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="https://github.com/vikto132/SE1414-C--Webform-Team3"><i class="fa fa-github"></i></a></li>
+                                <li><a href="https://twitter.com/"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="https://dribbble.com/"><i class="fa fa-dribbble"></i></a></li>
+                                <li><a href="https://www.pinterest.com/"><i class="fa fa-pinterest"></i></a></li>
                             </ul><!-- end links -->
                         </div>
                     </div><!-- end clearfix -->
@@ -212,10 +220,11 @@
                             <h3>Information Link</h3>
                         </div>
                         <ul class="footer-links">
-                            <li><a href="#">Home</a></li>
+                            <li><a href="@Url.Action("Index","Home")">Home</a></li>
                             <li><a href="#">Blog</a></li>
                             <li><a href="#">Pricing</a></li>
                             <li><a href="#">About</a></li>
+                            <li><a href="@Url.Action("Course","Quizz")">Test</a></li>
                             <li><a href="#">Contact</a></li>
                         </ul><!-- end links -->
                     </div><!-- end clearfix -->
@@ -253,9 +262,12 @@
     <a href="#" id="scroll-to-top" class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
 
     <!-- ALL JS FILES -->
-    <script src="~/Assets/admin/dist/js/all.js"></script>
-    <!-- ALL PLUGINS -->
-    <script src="~/Assets/admin/dist/js/custom.js"></script>
+    @Scripts.Render("~/Assets/admin/dist/js/all.js")
 
+    <!-- ALL PLUGINS -->
+    @Scripts.Render("~/Assets/admin/dist/js/custom.js")
+    @Scripts.Render("~/Assets/admin/quizz/js/REST.js")
+
+    @RenderSection("scripts", required: false)
 </body>
 </html>

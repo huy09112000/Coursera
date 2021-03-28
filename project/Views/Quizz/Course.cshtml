@@ -1,0 +1,88 @@
+﻿@model IEnumerable<project.Models.DTO.CourseDTO>
+@using PagedList.Mvc
+@using PagedList
+@{
+    ViewBag.Title = "Course";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var pagedList = (IPagedList)Model;
+}
+@Styles.Render("~/Assets/admin/quizz/css/style.css")
+<div class="list_background">
+    <div class="title__page" onclick="window.location.href = '@Url.Content("~/Quizz/Course")'">
+        <div class="title__arrow right"></div>
+        <h2>Course</h2>
+    </div>
+    <div class="list__container">
+        @foreach (var item in Model)
+        {
+            <div class="list__item up" onclick="hideOnClick(this, '@Html.DisplayFor(modelitem => item.Id)')" id="@Html.DisplayFor(modelitem => item.Id)c">
+                <div class="item__header">
+                    <h1> @Html.DisplayFor(modelItem => item.Name)</h1>
+                </div>
+                <div class="cut__corners"></div>
+                <div class="item__body">
+                    <div class="picture__body">
+                        <img src="@Url.Content(item.Image)" />
+                    </div>
+                    <div class="rating__star">
+                        @*<img src="@Url.Content("~/Assets/images/rating-star-active.png")"/>*@
+                        <div class="star__active" style="width:@Html.DisplayFor(modelItem => item.rate);"></div>
+                        <img src="@Url.Content("~/Assets/images/rating-star.png")" />
+                    </div>
+                    <div class="content__body">
+                        @Html.DisplayFor(modelItem => item.Describtion)
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+    <div class="list__subject" id="lstsubject">
+        @*<div class="item__subject pos-1">
+            <div class="subject__header"><h1>Math</h1></div>
+            <div class="subject__content">
+                <p>
+                    bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+                </p>
+            </div>
+        </div>
+        <div class="item__subject pos-2">
+            <div class="subject__header">Math</div>
+        </div>
+        <div class="item__subject pos-3">
+            <div class="subject__header">Math</div>
+        </div>
+        <div class="item__subject pos-4">
+            <div class="subject__header">Math</div>
+        </div>
+        <div class="item__subject pos-5">
+            <div class="subject__header">Math</div>
+        </div>
+        <div class="item__subject pos-6">
+            <div class="subject__header">Math</div>
+        </div>*@
+        
+    </div>
+
+    @Html.PagedListPager(pagedList, page => Url.Action("Course",
+        new { page }), new PagedListRenderOptions
+        {
+            DisplayLinkToFirstPage = PagedListDisplayMode.Always,
+            DisplayLinkToLastPage = PagedListDisplayMode.Always,
+            DisplayLinkToNextPage = PagedListDisplayMode.Always,
+            DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
+            MaximumPageNumbersToDisplay = 5,
+            LiElementClasses = new string[] { "page-item" },
+        })
+</div>
+
+
+@Scripts.Render("~/Assets/admin/quizz/js/util.js")
+
+<script type="text/javascript">
+   
+</script>
+
+
+
+

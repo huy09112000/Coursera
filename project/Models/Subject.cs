@@ -19,7 +19,7 @@ namespace project.Models
         public string Image { get; set; }
         public string Describtion { get; set; }
 
-        public int? Rate { get; set; }
+        public double? Rate { get; set; }
         public int? Total_rate { get; set; }
 
         public int CurrentCourseId { get; set; }

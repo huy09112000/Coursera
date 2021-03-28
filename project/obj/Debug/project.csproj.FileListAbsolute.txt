@@ -72,7 +72,6 @@ D:\homework\major\c#_On_Class\project\SE1414-C--Webform-Team3\project\bin\System
 D:\homework\major\c#_On_Class\project\SE1414-C--Webform-Team3\project\bin\Newtonsoft.Json.xml
 D:\homework\major\c#_On_Class\project\SE1414-C--Webform-Team3\project\bin\Antlr3.Runtime.pdb
 D:\homework\major\c#_On_Class\project\SE1414-C--Webform-Team3\project\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:\homework\major\c#_On_Class\project\SE1414-C--Webform-Team3\project\obj\Debug\project.csprojAssemblyReference.cache
 D:\homework\major\c#_On_Class\project\SE1414-C--Webform-Team3\project\obj\Debug\project.csproj.CoreCompileInputs.cache
 D:\homework\major\c#_On_Class\project\SE1414-C--Webform-Team3\project\obj\Debug\project.csproj.CopyComplete
 D:\homework\major\c#_On_Class\project\SE1414-C--Webform-Team3\project\obj\Debug\project.dll
@@ -174,3 +173,26 @@ D:\Desktop\FPT\semester 5\.Net\Final_Project\Final_Project\SE1414-C--Webform-Tea
 D:\Desktop\FPT\semester 5\.Net\Final_Project\Final_Project\SE1414-C--Webform-Team3\project\obj\Debug\project.csproj.CopyComplete
 D:\Desktop\FPT\semester 5\.Net\Final_Project\Final_Project\SE1414-C--Webform-Team3\project\obj\Debug\project.dll
 D:\Desktop\FPT\semester 5\.Net\Final_Project\Final_Project\SE1414-C--Webform-Team3\project\obj\Debug\project.pdb
+D:\homework\major\c#_On_Class\project\SE1414-C--Webform-Team3\project\bin\PagedList.dll
+D:\homework\major\c#_On_Class\project\SE1414-C--Webform-Team3\project\bin\PagedList.Mvc.dll
+D:\homework\major\c#_On_Class\project\SE1414-C--Webform-Team3\project\bin\PagedList.xml
+D:\homework\major\c#_On_Class\project\SE1414-C--Webform-Team3\project\bin\PagedList.Mvc.xml
+D:\homework\major\c#_On_Class\project\SE1414-C--Webform-Team3\project\bin\AutoMapper.dll
+D:\homework\major\c#_On_Class\project\SE1414-C--Webform-Team3\project\bin\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+D:\homework\major\c#_On_Class\project\SE1414-C--Webform-Team3\project\bin\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\homework\major\c#_On_Class\project\SE1414-C--Webform-Team3\project\bin\Microsoft.Extensions.Options.dll
+D:\homework\major\c#_On_Class\project\SE1414-C--Webform-Team3\project\bin\Microsoft.Extensions.Primitives.dll
+D:\homework\major\c#_On_Class\project\SE1414-C--Webform-Team3\project\bin\System.Buffers.dll
+D:\homework\major\c#_On_Class\project\SE1414-C--Webform-Team3\project\bin\System.ComponentModel.Annotations.dll
+D:\homework\major\c#_On_Class\project\SE1414-C--Webform-Team3\project\bin\System.Memory.dll
+D:\homework\major\c#_On_Class\project\SE1414-C--Webform-Team3\project\bin\System.Numerics.Vectors.dll
+D:\homework\major\c#_On_Class\project\SE1414-C--Webform-Team3\project\bin\System.Runtime.CompilerServices.Unsafe.dll
+D:\homework\major\c#_On_Class\project\SE1414-C--Webform-Team3\project\bin\AutoMapper.xml
+D:\homework\major\c#_On_Class\project\SE1414-C--Webform-Team3\project\bin\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+D:\homework\major\c#_On_Class\project\SE1414-C--Webform-Team3\project\bin\Microsoft.Extensions.Options.xml
+D:\homework\major\c#_On_Class\project\SE1414-C--Webform-Team3\project\bin\Microsoft.Extensions.Primitives.xml
+D:\homework\major\c#_On_Class\project\SE1414-C--Webform-Team3\project\bin\System.Buffers.xml
+D:\homework\major\c#_On_Class\project\SE1414-C--Webform-Team3\project\bin\System.Memory.xml
+D:\homework\major\c#_On_Class\project\SE1414-C--Webform-Team3\project\bin\System.Numerics.Vectors.xml
+D:\homework\major\c#_On_Class\project\SE1414-C--Webform-Team3\project\bin\System.Runtime.CompilerServices.Unsafe.xml
+D:\homework\major\c#_On_Class\project\SE1414-C--Webform-Team3\project\obj\Debug\project.Migrations.empty.resources
