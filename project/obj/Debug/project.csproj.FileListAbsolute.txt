@@ -199,3 +199,4 @@ D:\homework\major\c#_On_Class\project\SE1414-C--Webform-Team3\project\obj\Debug\
 D:\homework\major\c#_On_Class\project\SE1414-C--Webform-Team3\project\obj\Debug\project.Migrations.changeQuizz.resources
 D:\homework\major\c#_On_Class\project\SE1414-C--Webform-Team3\project\obj\Debug\project.Migrations.addImageQuizz.resources
 D:\homework\major\c#_On_Class\project\SE1414-C--Webform-Team3\project\obj\Debug\project.csprojAssemblyReference.cache
+D:\homework\major\c#_On_Class\project\SE1414-C--Webform-Team3\project\obj\Debug\project.Migrations.updtepointtable.resources

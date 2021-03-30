@@ -98,7 +98,7 @@ namespace project.Controllers
 
             ViewBag.lessonId = lessonId;
             ViewBag.quizzId = quizzId;
-            return View();
+            return View("Exam");
         }
         [HttpPost]
         public ActionResult OnTesting(int quizzId)
