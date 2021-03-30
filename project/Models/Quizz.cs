@@ -18,6 +18,8 @@ namespace project.Models
         public string Describtion { get; set; }
         public int? NumberQuestion { get; set; }
         public int? Level { get; set; }
+        public double time { get; set; }
+
         public int CurrentLessionId { get; set; }
         public Lession Lession { get; set; }
 
