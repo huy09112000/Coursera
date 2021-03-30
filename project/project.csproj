@@ -208,6 +208,10 @@
     <Compile Include="Migrations\202103300952129_chang quiz.Designer.cs">
       <DependentUpon>202103300952129_chang quiz.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103301023071_merge_1.cs" />
+    <Compile Include="Migrations\202103301023071_merge_1.Designer.cs">
+      <DependentUpon>202103301023071_merge_1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Answer.cs" />
     <Compile Include="Models\Course.cs" />
@@ -457,6 +461,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103300952129_chang quiz.resx">
       <DependentUpon>202103300952129_chang quiz.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103301023071_merge_1.resx">
+      <DependentUpon>202103301023071_merge_1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

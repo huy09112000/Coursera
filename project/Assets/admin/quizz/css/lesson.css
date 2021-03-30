@@ -76,7 +76,12 @@
     box-shadow: 0 0 0 11px transparent;
     margin: 5px 6px;
 }
-
+.quizz__time {
+    position: absolute;
+    bottom: 370px;
+    color: black;
+    right: 10px;
+}
 /*.circle:nth-child(odd) {
         background: #BD8E02;
     }*/
