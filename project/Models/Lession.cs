@@ -17,6 +17,9 @@ namespace project.Models
         public string Name { get; set; }
         public string Describtion { get; set; }
         public string Url { get; set; }
+
+        [Range(0, int.MaxValue, ErrorMessage = "View must be  positive")]
+
         public int? View { get; set; }
         public string Content { get; set; }
         public int CurentSubjectId { get; set; }
