@@ -66,7 +66,53 @@ namespace project.Controllers
                 return View(model);
             }
         }
+
         public ActionResult Lesson(int subjectId, int lessonId)
+        {
+            using (EducationDBContext db = new EducationDBContext())
+            {
+                var lstQuizz = (from q in db.Quizzs where q.CurrentLessionId == lessonId orderby q.Id select q);
+
+                var lstNumQues = (from qz in lstQuizz 
+                                  join qs in db.Questions 
+                                  on qz.Id equals qs.CurrentQuizzId 
+                                  orderby qz.Id
+                                  group qs.Id by qz.Id into g 
+                                  select new { key = g.Key, count = g.Count() }).ToList();
+
+                var lstquizzDTO = AutoMap.Mapper.Map<List<QuizzDTO>>(lstQuizz.ToList());
+                for (int i = 0; i < lstquizzDTO.Count(); i++)
+                {
+                    lstquizzDTO.ElementAt(i).Image = string.IsNullOrEmpty(lstquizzDTO.ElementAt(i).Image) ? "~/Assets/images/quizz/quizz_default.png" : lstquizzDTO.ElementAt(i).Image;
+                    lstquizzDTO.ElementAt(i).Level = lstquizzDTO.ElementAt(i).Level.HasValue ? lstquizzDTO.ElementAt(i).Level : 0;
+                    lstquizzDTO.ElementAt(i).NumberQuestion = lstquizzDTO.ElementAt(i).NumberQuestion.HasValue ? lstquizzDTO.ElementAt(i).NumberQuestion : lstNumQues.ElementAtOrDefault(i)?.count;
+                }
+                ViewBag.subjectId = subjectId;
+                ViewBag.lessonId = lessonId;
+                return View(lstquizzDTO);
+
+            }
+        }
+        public ActionResult BeforeTesting(int lessonId, int quizzId)
+        {
+
+            ViewBag.lessonId = lessonId;
+            ViewBag.quizzId = quizzId;
+            return View();
+        }
+        [HttpPost]
+        public ActionResult OnTesting(int quizzId)
+        {
+            using (EducationDBContext db = new EducationDBContext())
+            {
+                var lst = (from qs in db.Questions where qs.CurrentQuizzId == quizzId orderby qs.Id select qs).ToList();
+                lst.ForEach(o => o.Answers = (from a in db.Answers where a.CurrentQuestionId==o.Id select a).ToList());
+                var lstDTO = AutoMap.Mapper.Map<List<QuestionsGivenDTO>>(lst);
+                return Json(new { data=lstDTO },JsonRequestBehavior.AllowGet);
+            }
+        }
+        [HttpPost]
+        public ActionResult AfterSubmit()
         {
             return View();
         }
@@ -85,6 +131,7 @@ namespace project.Controllers
                     Image = o.Image,
                     CurrentCourseId = o.CurrentCourseId
                 }).ToArray();
+                
                 return Json(new { data = lst, courseId = id }, JsonRequestBehavior.AllowGet);
 
             }

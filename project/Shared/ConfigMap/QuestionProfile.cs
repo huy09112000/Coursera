@@ -8,12 +8,11 @@ using System.Web;
 
 namespace project.Shared.ConfigMap
 {
-    public class SubjectProfile : Profile
+    public class QuestionProfile:Profile
     {
-        public SubjectProfile()
+        public QuestionProfile()
         {
-            this.CreateMap<Subject, SubjectDTO>();
-            this.CreateMap<SubjectDTO, Subject>();
+            this.CreateMap<Question, QuestionsGivenDTO>();
         }
     }
 }

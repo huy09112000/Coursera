@@ -17,6 +17,9 @@ namespace project.Shared
                config =>
                {
                    config.AddProfile<SubjectProfile>();
+                   config.AddProfile<LessonProfile>();
+                   config.AddProfile<QuizzProfile>();
+                   config.AddProfile<QuestionProfile>();
                });
 
             Mapper = mapperConfiguration.CreateMapper();

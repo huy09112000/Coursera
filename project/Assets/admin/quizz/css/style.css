@@ -75,7 +75,23 @@
         transform: scale(1);
     }
 }
+@keyframes skewRight{
+    100%{
+        transform:skew(0deg,90deg);
+    }
+    0%{
+        transform:skew(0deg,180deg);
+    }
 }
+@keyframes skewLeft{
+    100%{
+        transform:skew(0deg,270deg);
+    }
+    0%{
+        transform:skew(0deg,180deg);
+    }
+}
+
 .section{
     padding:0;
 }
@@ -119,7 +135,7 @@ img {
     background-image: url('../../../images/rating-star-active.png');
     background-repeat: no-repeat;
     height: 100%;
-    top: 5px;
+    top: 7px;
 }
 
 .list__container {

@@ -14,7 +14,7 @@ namespace project.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public string Name { get; set; }
-
+        public string Image { get; set; }
         public string Describtion { get; set; }
         public int? NumberQuestion { get; set; }
         public int? Level { get; set; }

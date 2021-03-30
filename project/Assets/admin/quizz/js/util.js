@@ -79,8 +79,6 @@ function wheel(event) {
 function handle(delta) {
     var time = 1000;
     var distance = 56;
-    console.log(1, $('#lstsubject').scrollTop());
-    console.log(2, $('#lstsubject').children());
     if ($('#lstsubject').scrollHeight - $('#lstsubject').scrollTop() == $('#lstsubject').outerHeight()) {
         console.log("bottom");
     }
@@ -89,5 +87,28 @@ function handle(delta) {
     });
 }
 
+//lesson section
+
+$(document).ready(function () {
+    console.log(1, $('#lstQuizz').children());
+    let child = $('#lstQuizz').children();
+    child.each(function (idx, val) {
+        let level = val.id.split("-")[1];
+        level = parseInt(level);
+        let lst = $(this).find(".quizz__level").children();
+
+        lst.each(function (childId) {
+            if (childId < level) {
+                $(this).css('background', ' #BD8E02');
+            }
+        });
+
+    });
+});
+function moveToExam(ele){
+    let idQuizz = ele.id.split("-")[0];
+    let idLesson = ele.id.split("-")[3]
+    window.location.href = "/quizz/test/" + idLesson + "/" + idQuizz;
+}
 
 

@@ -5,15 +5,14 @@ using System.Web;
 
 namespace project.Models.DTO
 {
-    public class LessonDTO
+    public class QuizzDTO
     {
         public int Id { get; set; }
         public string Name { get; set; }
-
+        public string Image { get; set; }
         public string Describtion { get; set; }
-        public string Url { get; set; }
-        public int? View { get; set; }
-        public string Content { get; set; }
-        public int CurentSubjectId { get; set; }
+        public int? NumberQuestion { get; set; }
+        public int? Level { get; set; }
+        public int CurrentLessionId { get; set; }
     }
 }
