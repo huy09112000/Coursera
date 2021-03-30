@@ -18,8 +18,10 @@ namespace project.Models
         public string Code { get; set; }
         public string Image { get; set; }
         public string Describtion { get; set; }
-
+        [Range(0,double.MaxValue,ErrorMessage ="Rate must be  positive")]
         public double? Rate { get; set; }
+        [Range(0, double.MaxValue, ErrorMessage = "Rate must be  positive")]
+
         public int? Total_rate { get; set; }
 
         public int CurrentCourseId { get; set; }
