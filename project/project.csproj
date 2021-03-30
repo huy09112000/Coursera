@@ -204,6 +204,10 @@
     <Compile Include="Migrations\202103300858266_updte point table.Designer.cs">
       <DependentUpon>202103300858266_updte point table.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103300952129_chang quiz.cs" />
+    <Compile Include="Migrations\202103300952129_chang quiz.Designer.cs">
+      <DependentUpon>202103300952129_chang quiz.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Answer.cs" />
     <Compile Include="Models\Course.cs" />
@@ -450,6 +454,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103300858266_updte point table.resx">
       <DependentUpon>202103300858266_updte point table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103300952129_chang quiz.resx">
+      <DependentUpon>202103300952129_chang quiz.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
