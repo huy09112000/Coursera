@@ -188,33 +188,15 @@
     <Compile Include="Migrations\202103180858471_database-first.designer.cs">
       <DependentUpon>202103180858471_database-first.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202103280819094_empty.cs" />
-    <Compile Include="Migrations\202103280819094_empty.Designer.cs">
-      <DependentUpon>202103280819094_empty.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202103281655493_changeQuizz.cs" />
-    <Compile Include="Migrations\202103281655493_changeQuizz.Designer.cs">
-      <DependentUpon>202103281655493_changeQuizz.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202103281922288_addImageQuizz.cs" />
-    <Compile Include="Migrations\202103281922288_addImageQuizz.Designer.cs">
-      <DependentUpon>202103281922288_addImageQuizz.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202103300858266_updte point table.cs" />
-    <Compile Include="Migrations\202103300858266_updte point table.Designer.cs">
-      <DependentUpon>202103300858266_updte point table.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202103300952129_chang quiz.cs" />
-    <Compile Include="Migrations\202103300952129_chang quiz.Designer.cs">
-      <DependentUpon>202103300952129_chang quiz.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202103301023071_merge_1.cs" />
-    <Compile Include="Migrations\202103301023071_merge_1.Designer.cs">
-      <DependentUpon>202103301023071_merge_1.cs</DependentUpon>
+    <Compile Include="Migrations\202103311413064_add-new-table.cs" />
+    <Compile Include="Migrations\202103311413064_add-new-table.Designer.cs">
+      <DependentUpon>202103311413064_add-new-table.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Answer.cs" />
     <Compile Include="Models\Course.cs" />
+    <Compile Include="Models\Feature.cs" />
+    <Compile Include="Models\GroupFeature.cs" />
     <Compile Include="Models\DTO\CourseDTO.cs" />
     <Compile Include="Models\DTO\LessonDTO.cs" />
     <Compile Include="Models\DTO\QuestionsGivenDTO.cs" />
@@ -363,9 +345,6 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\font-awesome.css" />
-    <Content Include="Content\font-awesome.min.css" />
-    <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -381,51 +360,6 @@
     <Content Include="Assets\admin\dist\fonts\fontawesome-webfont.woff" />
     <Content Include="Assets\admin\dist\fonts\fontawesome-webfont.woff2" />
     <Content Include="Assets\admin\dist\fonts\FontAwesome.otf" />
-    <Content Include="fonts\9Slide03-SFU-Futura-Bold_0.ttf" />
-    <Content Include="fonts\9Slide03-SFU-Futura-Book_0.ttf" />
-    <Content Include="fonts\9Slide03-SFU-Futura-ExtraBold_0.ttf" />
-    <Content Include="fonts\9Slide03-SFU-Futura-Light_0.ttf" />
-    <Content Include="fonts\9Slide03-SFU-Futura-Regular_0.ttf" />
-    <Content Include="fonts\FontAwesome.otf" />
-    <Content Include="fonts\fontawesome-webfont.woff2" />
-    <Content Include="fonts\fontawesome-webfont.woff" />
-    <Content Include="fonts\fontawesome-webfont.ttf" />
-    <Content Include="fonts\fontawesome-webfont.eot" />
-    <Content Include="libman.json" />
-    <Content Include="wwwroot\lib\font-awesome\css\all.css" />
-    <Content Include="wwwroot\lib\font-awesome\css\all.min.css" />
-    <Content Include="wwwroot\lib\font-awesome\css\brands.css" />
-    <Content Include="wwwroot\lib\font-awesome\css\brands.min.css" />
-    <Content Include="wwwroot\lib\font-awesome\css\fontawesome.css" />
-    <Content Include="wwwroot\lib\font-awesome\css\fontawesome.min.css" />
-    <Content Include="wwwroot\lib\font-awesome\css\regular.css" />
-    <Content Include="wwwroot\lib\font-awesome\css\regular.min.css" />
-    <Content Include="wwwroot\lib\font-awesome\css\solid.css" />
-    <Content Include="wwwroot\lib\font-awesome\css\solid.min.css" />
-    <Content Include="wwwroot\lib\font-awesome\css\svg-with-js.css" />
-    <Content Include="wwwroot\lib\font-awesome\css\svg-with-js.min.css" />
-    <Content Include="wwwroot\lib\font-awesome\css\v4-shims.css" />
-    <Content Include="wwwroot\lib\font-awesome\css\v4-shims.min.css" />
-    <Content Include="wwwroot\lib\font-awesome\js\all.js" />
-    <Content Include="wwwroot\lib\font-awesome\js\all.min.js" />
-    <Content Include="wwwroot\lib\font-awesome\js\brands.js" />
-    <Content Include="wwwroot\lib\font-awesome\js\brands.min.js" />
-    <Content Include="wwwroot\lib\font-awesome\js\conflict-detection.js" />
-    <Content Include="wwwroot\lib\font-awesome\js\conflict-detection.min.js" />
-    <Content Include="wwwroot\lib\font-awesome\js\fontawesome.js" />
-    <Content Include="wwwroot\lib\font-awesome\js\fontawesome.min.js" />
-    <Content Include="wwwroot\lib\font-awesome\js\regular.js" />
-    <Content Include="wwwroot\lib\font-awesome\js\regular.min.js" />
-    <Content Include="wwwroot\lib\font-awesome\js\solid.js" />
-    <Content Include="wwwroot\lib\font-awesome\js\solid.min.js" />
-    <Content Include="wwwroot\lib\font-awesome\js\v4-shims.js" />
-    <Content Include="wwwroot\lib\font-awesome\js\v4-shims.min.js" />
-    <Content Include="wwwroot\lib\font-awesome\sprites\brands.svg" />
-    <Content Include="wwwroot\lib\font-awesome\sprites\regular.svg" />
-    <Content Include="wwwroot\lib\font-awesome\sprites\solid.svg" />
-    <Content Include="wwwroot\lib\font-awesome\webfonts\fa-brands-400.svg" />
-    <Content Include="wwwroot\lib\font-awesome\webfonts\fa-regular-400.svg" />
-    <Content Include="wwwroot\lib\font-awesome\webfonts\fa-solid-900.svg" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -503,24 +437,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103180858471_database-first.resx">
       <DependentUpon>202103180858471_database-first.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202103280819094_empty.resx">
-      <DependentUpon>202103280819094_empty.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202103281655493_changeQuizz.resx">
-      <DependentUpon>202103281655493_changeQuizz.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202103281922288_addImageQuizz.resx">
-      <DependentUpon>202103281922288_addImageQuizz.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202103300858266_updte point table.resx">
-      <DependentUpon>202103300858266_updte point table.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202103300952129_chang quiz.resx">
-      <DependentUpon>202103300952129_chang quiz.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202103301023071_merge_1.resx">
-      <DependentUpon>202103301023071_merge_1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
