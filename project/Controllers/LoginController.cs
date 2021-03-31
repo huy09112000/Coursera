@@ -31,6 +31,7 @@ namespace project.Views.Home
                 if (dataTable != null && dataTable.Rows.Count > 0)
                 {
                     //exist thi load them list<authorization> cho object roi sau do tạo session để lơi data
+                    // 
                     Session["account"] = acc;
                     return View("Contact");
                 }
