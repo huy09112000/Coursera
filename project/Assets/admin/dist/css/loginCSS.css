@@ -1,0 +1,163 @@
+﻿
+
+.account-top span, .register-top span {
+    font-size: 1.1em;
+    padding-right: 3em;
+}
+
+.account-top div {
+    padding: 1em 0;
+}
+
+.account-top span.pass {
+    padding-right: 1.3em;
+}
+
+.hihi{
+    padding-left:100px;
+}
+.account-top input[type="text"], .account-top input[type="password"] {
+    padding: 0.7em;
+    width: 85%;
+    background: none;
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -o-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    outline: none;
+    color: #464646;
+    font-size: 1em;
+}
+
+.register input[type="text"], .register input[type="password"] {
+    width: 60%;
+}
+
+.account-top input[type="submit"] {
+    background: #2277bf;
+    color: #fff;
+    font-size: 1.1em;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -o-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    font-weight: 600;
+    padding: 0.4em 1.3em;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    margin: 0 0 0 6em;
+}
+
+    .account-top input[type="submit"]:hover {
+        background: #013591;
+    }
+
+.five-in {
+    background: #fff;
+    border-radius: 100px;
+    border: 2px solid #f02b63;
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    top: 1%;
+    right: 25%;
+    padding: 1.3em 0 0;
+    text-align: center;
+}
+
+    .five-in h1 {
+        font-size: 1.5em;
+        font-weight: 700;
+        color: #000;
+    }
+
+    .five-in span {
+        font-size: 1em;
+        color: #f02b63;
+    }
+
+.left-account img {
+    margin: 0 auto;
+}
+
+.left-account {
+    position: relative;
+}
+
+a.create {
+    text-decoration: none;
+    color: #fff;
+    padding: 7px 20px;
+    background: #2277bf;
+    margin: 0 auto;
+    text-align: center;
+    display: block;
+    width: 35%;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -o-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+}
+
+    a.create:hover {
+        background: #013591;
+    }
+
+.account-pass {
+    padding: 1.5em 0 0;
+}
+
+.account-in {
+    padding: 7em 1em;
+    min-height: 550px;
+}
+
+    .account-in h2, .register h2 {
+        font-size: 2.5em;
+        color: #000;
+        padding: 0 0.5em 1em;
+        font-weight: 600;
+    }
+
+.register {
+    padding: 0 15px;
+}
+.account-top span, .register-top span {
+    font-size: 1.1em;
+    padding-right: 3em;
+}
+
+.account-top div {
+    padding: 1em 0;
+}
+
+.account-top span.pass {
+    padding-right: 1.3em;
+}
+
+.account-top input[type="text"], .account-top input[type="password"] {
+    padding: 0.7em;
+    width: 85%;
+    background: none;
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -o-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    outline: none;
+    color: #464646;
+    font-size: 1em;
+}
+
+.register input[type="text"], .register input[type="password"] {
+    width: 60%;
+}

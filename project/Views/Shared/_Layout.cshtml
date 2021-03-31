@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@model project.Models.User
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <!-- Basic -->
@@ -29,16 +31,20 @@
     <link rel="stylesheet" href="~/Assets/admin/dist/css/custom.css">
     <link href="~/Assets/admin/dist/css/font-awesome.css" rel="stylesheet" />
     <link href="~/Assets/admin/dist/css/font-awesome.min.css" rel="stylesheet" />
+    @RenderSection(name: "header", required: false)
     <!-- Modernizer for Portfolio -->
     <script src="~/Assets/admin/dist/js/modernizer.js"></script>
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    @*nhúng các thẻ vào header từ cshtml using layout*@
+
 </head>
 <body class="host_version">
 
     <!-- Modal -->
+
     <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
             <div class="modal-content">
@@ -55,71 +61,120 @@
                     <!-- Tab panes -->
                     <div class="tab-content">
                         <div class="tab-pane active" id="Login">
-                            <form role="form" class="form-horizontal">
-                                <div class="form-group">
-                                    <div class="col-sm-12">
-                                        <input class="form-control" id="email1" placeholder="Email" type="text">
+                            @using (Html.BeginForm("Verify", "Login", FormMethod.Post))
+                            {
+                                <form role="form" class="form-horizontal">
+                                    <div class="form-group">
+                                        <div class="col-sm-12">
+                                            @Html.TextBoxFor(Model => Model.Email, htmlAttributes: new { placeholder = "Email", @class = "form-control" })
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-12">
-                                        <input class="form-control" id="exampleInputPassword1" placeholder="Password" type="email">
+                                    <div class="form-group">
+                                        <div class="col-sm-12">
+                                            @Html.TextBoxFor(Model => Model.Password, htmlAttributes: new { placeholder = "Password", @class = "form-control" })
+                                            Password
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-10">
-                                        <button type="submit" class="btn btn-light btn-radius btn-brd grd1">
-                                            Submit
-                                        </button>
-                                        <a class="for-pwd" href="javascript:;">Forgot your password?</a>
+                                    <div class="row">
+                                        <div class="col-sm-10">
+                                            <!--forgot password-->
+                                            <div class="container">
+                                                <a href="#" data-target="#pwdModal" data-toggle="modal">Forgot my password?</a>
+                                            </div>
+
+                                            <!--modal-->
+                                            <div id="pwdModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                            <h1 class="text-center">Forgot Password?</h1>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="col-md-12">
+                                                                <div class="panel panel-default">
+                                                                    <div class="panel-body">
+                                                                        <div class="text-center">
+
+                                                                            <p>If you have forgotten your password you can reset it here.</p>
+                                                                            <div class="panel-body">
+                                                                                <fieldset>
+                                                                                    @using (Html.BeginForm("ForgotPass", "Login", FormMethod.Post))
+                                                                                    {
+                                                                                        <div class="form-group">
+                                                                                            @Html.TextBoxFor(s => s.Email, htmlAttributes: new { placeholder = "E-mail Address", @class = "form-control input-lg" })
+                                                                                        </div>
+                                                                                        <input class="btn btn-lg btn-primary btn-block" value="Send My Password" type="submit">
+                                                                                    }
+                                                                                </fieldset>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <div class="col-md-12">
+                                                                <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--end forgot password-->
+                                            <button type="submit" class="btn btn-light btn-radius btn-brd grd1">
+                                                Submit
+                                            </button>
+
+                                        </div>
                                     </div>
-                                </div>
-                            </form>
+                                </form>
+
+                            }
                         </div>
                         <div class="tab-pane" id="Registration">
-                            <form role="form" class="form-horizontal">
-                                <div class="form-group">
-                                    <div class="col-sm-12">
-                                        <input class="form-control" placeholder="Name" type="text">
+                            @using (Html.BeginForm("Register", "Login", FormMethod.Post))
+                            {
+                                <form role="form" class="form-horizontal">
+                                    <div class="form-group">
+                                        <div class="col-sm-12">
+                                            <input class="form-control" placeholder="Name" type="text">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-12">
-                                        <input class="form-control" id="email" placeholder="Email" type="email">
+                                    <div class="form-group">
+                                        <div class="col-sm-12">
+                                            <input class="form-control" id="email" placeholder="Email" type="email">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-12">
-                                        <input class="form-control" id="Dob" placeholder="Date of birth" type="datetime">
+                                    <div class="form-group">
+                                        <div class="col-sm-12">
+                                            <input class="form-control" id="mobile" placeholder="Mobile" type="email">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-12">
-                                        <input class="form-control" id="Phone" placeholder="Phone number" type="email">
+                                    <div class="form-group">
+                                        <div class="col-sm-12">
+                                            <input class="form-control" id="password" placeholder="Password" type="password">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-12">
-                                        <input class="form-control" id="password" placeholder="Password" type="password">
+                                    <div class="row">
+                                        <div class="col-sm-10">
+                                            <button type="button" class="btn btn-light btn-radius btn-brd grd1">
+                                                Save &amp; Continue
+                                            </button>
+                                            <button type="button" class="btn btn-light btn-radius btn-brd grd1">
+                                                Cancel
+                                            </button>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-10">
-                                        <button type="button" class="btn btn-light btn-radius btn-brd grd1">
-                                            Save &amp; Continue
-                                        </button>
-                                        <button type="button" class="btn btn-light btn-radius btn-brd grd1">
-                                            Cancel
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
+                                </form>
+                            }
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
 
     <!-- LOADER -->
     <div id="preloader">
@@ -163,8 +218,8 @@
                             </div>
                         </li>
                         <li class="nav-item"><a class="nav-link" href="teachers.html">Teachers</a></li>
-                        <li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>
-                        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link" href="https://localhost:44377/Home/Login">Login</a></li>
+                        <li class="nav-item"><a class="nav-link" href="https://localhost:44377/Home/Register">Register</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a class="hover-btn-new log" href="#" data-toggle="modal" data-target="#login"><span>Book Now</span></a></li>
@@ -174,16 +229,10 @@
         </nav>
     </header>
     <!-- End header -->
-
-    <div class="all-title-box">
-        <div class="container text-center">
-            <h1>About Us<span class="m_1">Lorem Ipsum dolroin gravida nibh vel velit.</span></h1>
-        </div>
-    </div>
-
-        <!-- content of each page nested in heare -->
-        @RenderBody()
-        <!-- content of each page nested in heare -->
+    
+    <!-- content of each page nested in heare -->
+    @RenderBody()
+    <!-- content of each page nested in heare -->
 
     <div class="parallax section dbcolor">
         <div class="container">
@@ -281,6 +330,5 @@
     <script src="~/Assets/admin/dist/js/all.js"></script>
     <!-- ALL PLUGINS -->
     <script src="~/Assets/admin/dist/js/custom.js"></script>
-
 </body>
 </html>

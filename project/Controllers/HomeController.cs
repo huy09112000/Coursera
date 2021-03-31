@@ -9,9 +9,10 @@ namespace project.Controllers
     public class HomeController : Controller
     {
 
+        //cac home controller se phai check exist session va check authorization tu list
         public ActionResult Index()
         {
-            
+
             return View();
         }
 
@@ -25,8 +26,25 @@ namespace project.Controllers
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
-
             return View();
         }
+
+        public ActionResult Login()
+        {
+            ViewBag.Message = "Your contact page.";
+            return View();
+        }
+        public ActionResult ForgotPassword()
+        {
+            ViewBag.Message = "Forgot pw";
+            return View();
+        }
+
+        public ActionResult Register()
+        {
+            ViewBag.Message = "Forgot pw";
+            return View();
+        }
+
     }
 }

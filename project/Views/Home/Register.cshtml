@@ -1,0 +1,36 @@
+﻿@model project.Models.User
+
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section header{
+    <link href="~/Assets/admin/dist/css/loginCSS.css" rel="stylesheet" />
+}
+@using (Html.BeginForm("Register", "Login", FormMethod.Post))
+{
+
+    <div class="content">
+        <div class="account-in register-top">
+            <h2>Register</h2>
+
+            <div class=" account-top register">
+                <form action="insertAccount" method="POST">
+                    <div>
+                        <span>Email:</span>
+                        @Html.TextBoxFor(Model => Model.Email, htmlAttributes: new { type = "email", placeholder = "E-mail Address", @class = "form-control input-lg" })
+
+                    </div>
+
+                    <div>
+                        <span>Email:</span>
+                        @Html.TextBoxFor(model => model.Password, new { @type = "text", placeholder = "Password", @class = "form-control" })
+                    </div>
+
+                    <input type="submit" value="Register">
+                </form>
+            </div>
+        </div>
+    </div>
+}

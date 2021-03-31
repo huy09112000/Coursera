@@ -85,6 +85,5 @@ namespace project.DAL
 
             base.OnModelCreating(modelBuilder);
         }
-
     }
 }

@@ -20,7 +20,11 @@ namespace project.Models
         public int Id { get; set; }
         [MaxLength(50)]
         public string Name { get; set; }
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime? DOB { get; set; }
+
         public int? Phone { get; set; }
         public bool? Gender { get; set; }
         public User User { get; set; }
