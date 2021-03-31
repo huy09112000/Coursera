@@ -33,20 +33,21 @@
 
     <!-- Custom CSS -->
     @Styles.Render("~/Assets/admin/dist/css/custom.css")
-    @Styles.Render("~/Assets/admin/dist/css/font-awesome.css")
-    @Styles.Render("~/Assets/admin/dist/css/font-awesome.min.css")
 
+    <link href="~/wwwroot/lib/font-awesome/css/all.css" rel="stylesheet" />
     <!-- Modernizer for Portfolio -->
     @Scripts.Render("~/Assets/admin/dist/js/modernizer.js")
 
     @*flickity carousels slide show*@
     <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
-
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    @Styles.Render("~/Content/extentCss")
+
     @Scripts.Render("~/bundles/jquery")
+
     <style type="text/css">
         * {
             font-family: futura;
@@ -54,7 +55,6 @@
     </style>
 </head>
 <body class="host_version">
-
     <!-- Modal -->
     <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">

@@ -1,10 +1,12 @@
-﻿
+﻿@model project.Models.DTO.QuizzDTO
+@using project.Models.DTO
 @{
     ViewBag.Title = "Exam";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 @Styles.Render("~/Assets/admin/quizz/css/style.css")
+
 @Styles.Render("~/Assets/admin/quizz/css/Exam.css")
 
 <div class="list_background">
@@ -13,41 +15,78 @@
         <h2>Exam</h2>
     </div>
     <div class="list__container" id="lstExam">
-        <div style="display:flex">
-            <div class="time">
-                <span class="count top flipTop">2</span>
-                <span class="count top">1</span>
-                <span class="count bottom flipBottom">1</span>
-                <span class="count bottom">2</span>
+        <div class="clock">
+            <div class="time" id="hundred_minute">
+                <span class="count top flipTop">1</span>
+                <span class="count top">0</span>
+                <span class="count bottom flipBottom">0</span>
+                <span class="count bottom">1</span>
             </div>
-            <div class="time">
-                <span class="count top flipTop">2</span>
-                <span class="count top">1</span>
-                <span class="count bottom flipBottom">1</span>
-                <span class="count bottom">2</span>
+            <div class="time t-d-1" id="dozen_minute">
+                <span class="count top flipTop">1</span>
+                <span class="count top">0</span>
+                <span class="count bottom flipBottom">0</span>
+                <span class="count bottom">1</span>
             </div>
-            <div>:</div>
-            <div class="time">
-                <span class="count top flipTop">2</span>
-                <span class="count top">1</span>
-                <span class="count bottom flipBottom">1</span>
-                <span class="count bottom">2</span>
+            <div class="time t-d-1_5" id="minute">
+                <span class="count top flipTop">1</span>
+                <span class="count top">0</span>
+                <span class="count bottom flipBottom">0</span>
+                <span class="count bottom">1</span>
             </div>
-            <div class="time">
-                <span class="count top flipTop">2</span>
-                <span class="count top">1</span>
-                <span class="count bottom flipBottom">1</span>
-                <span class="count bottom">2</span>
+            <div class="time__divider">:</div>
+            <div class="time t-d-1_5" id="dozen_second">
+                <span class="count top flipTop">1</span>
+                <span class="count top">0</span>
+                <span class="count bottom flipBottom">0</span>
+                <span class="count bottom">1</span>
+            </div>
+            <div class="time t-d-2" id="second">
+                <span class="count top flipTop">1</span>
+                <span class="count top">0</span>
+                <span class="count bottom flipBottom">0</span>
+                <span class="count bottom">1</span>
             </div>
         </div>
-     
+        <div class="start__exam bounding" id="start__exam">
+            <span>Start</span>
+        </div>
+        <div class="quizz__overview">
+            <div class="row quizz_name">
+                <span class="over__des"><i class="fas fa-puzzle-piece"></i></span>
+                <span>Name: @Model.Name</span>
+            </div>
+            <div class="row quizz__des">
+                <span class="over__des"><i class="far fa-sticky-note"></i></span>
+                <span>Desciption: @Model.Describtion</span>
+            </div>
+            <div class="row ques__count">
+                <span class="over__des"><i class="far fa-question-circle"></i></span>
+                <span>Questions: @Model.NumberQuestion</span>
+            </div>
+            <div class="row overview__level" id="level">
+                <span class="over__des"><i class="fas fa-layer-group"></i></span>
+                <span>Level: </span>
+                <div class="quizz__level" title="Level @Model.Level" id="l-@Model.Level">
+                    <span class="circle"></span>
+                    <span class="circle"></span>
+                    <span class="circle"></span>
+                    <span class="circle"></span>
+                    <span class="circle"></span>
+                </div>
+            </div>
+            <div class="row quizz__time" id="timer">
+                <span class="over__des"><i class="far fa-hourglass"></i></span>
+                <span id="t-@Model.time">Time: @Model.time h</span>
+            </div>
+        </div>
     </div>
 
 
 </div>
 
 
-@Scripts.Render("~/Assets/admin/quizz/js/util.js")
+@Scripts.Render("~/Assets/admin/quizz/js/Exam.js")
 
 
 

@@ -95,10 +95,14 @@ namespace project.Controllers
         }
         public ActionResult BeforeTesting(int lessonId, int quizzId)
         {
-
-            ViewBag.lessonId = lessonId;
-            ViewBag.quizzId = quizzId;
-            return View("Exam");
+            using (EducationDBContext db = new EducationDBContext())
+            {
+                var quizzDTO = AutoMap.Mapper.Map<QuizzDTO>((from qz in db.Quizzs where qz.Id == quizzId select qz).FirstOrDefault());
+                quizzDTO.NumberQuestion = (from qs in db.Questions where qs.CurrentQuizzId == quizzDTO.Id select qs).Count();
+                ViewBag.lessonId = lessonId;
+                ViewBag.quizzId = quizzId;
+                return View("Exam",quizzDTO);
+            }
         }
         [HttpPost]
         public ActionResult OnTesting(int quizzId)
