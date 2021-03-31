@@ -28,7 +28,9 @@ namespace project.Models
         public string Code { get; set; }
 
         public string Image { get; set; }
-        public int? rate { get; set; }
+        [Range(0, double.MaxValue, ErrorMessage = "Rate must be  positive")]
+        public double? rate { get; set; }
+        [Range(0, double.MaxValue, ErrorMessage = "Rate must be  positive")]
         public int? total_rate { get; set; }
 
         public virtual ICollection<UserInfor> UserInfors { get; set; }

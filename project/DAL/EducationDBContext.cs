@@ -30,6 +30,9 @@ namespace project.DAL
         public DbSet<Answer> Answers { get; set; }
 
         public DbSet<Point> points { get; set; }
+
+        public DbSet<Feature> features { get; set; }
+        public DbSet<GroupFeature> groupFeatures { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.HasDefaultSchema("dbo");
@@ -82,6 +85,14 @@ namespace project.DAL
             modelBuilder.Entity<Point>()
                 .HasRequired<Quizz>(p => p.Quizz)
                 .WithMany(qi => qi.Points);
+            modelBuilder.Entity<Feature>()
+                .HasOptional<GroupFeature>(f => f.GroupFeature)
+                .WithMany(gf => gf.features)
+                .HasForeignKey<int?>(f => f.CurrentGroupFeatureId);
+            modelBuilder.Entity<Feature>()
+                .HasOptional<User>(f => f.User)
+                .WithMany(u => u.features)
+                .HasForeignKey<int?>(f=>f.CurrentUserId);
 
             base.OnModelCreating(modelBuilder);
         }

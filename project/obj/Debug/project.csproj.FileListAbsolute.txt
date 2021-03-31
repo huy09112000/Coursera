@@ -174,3 +174,4 @@ D:\Desktop\FPT\semester 5\.Net\Final_Project\Final_Project\SE1414-C--Webform-Tea
 D:\Desktop\FPT\semester 5\.Net\Final_Project\Final_Project\SE1414-C--Webform-Team3\project\obj\Debug\project.csproj.CopyComplete
 D:\Desktop\FPT\semester 5\.Net\Final_Project\Final_Project\SE1414-C--Webform-Team3\project\obj\Debug\project.dll
 D:\Desktop\FPT\semester 5\.Net\Final_Project\Final_Project\SE1414-C--Webform-Team3\project\obj\Debug\project.pdb
+D:\homework\major\c#_On_Class\project\SE1414-C--Webform-Team3\project\obj\Debug\project.Migrations.addnewtable.resources

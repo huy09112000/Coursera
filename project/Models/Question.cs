@@ -14,7 +14,9 @@ namespace project.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public string Url { get; set; }
-        public int? Point { get; set; }
+
+        [Range(0,double.MaxValue,ErrorMessage ="point must positive"),Required]
+        public double? Point { get; set; }
         public string Content { get; set; }
         public int CurrentQuizzId { get; set; }
         public Quizz Quizz { get; set; }

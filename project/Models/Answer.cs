@@ -15,7 +15,7 @@ namespace project.Models
         public int Id { get; set; }
 
         public string Content { get; set; }
-
+        [Required]
         public bool IsCorrect { get; set; }
 
         public int CurrentQuestionId { get; set; }

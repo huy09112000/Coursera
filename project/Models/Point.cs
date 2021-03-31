@@ -13,8 +13,10 @@ namespace project.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        
-        public int Score { get; set; }
+        [Range(0,double.MaxValue,ErrorMessage ="point must positive"),Required]
+
+        public double Score { get; set; }
+        public int CorrectAnswer { get; set; }
         public virtual UserInfor UserInfor { get; set; }
   
         public virtual Quizz Quizz { get; set; }
