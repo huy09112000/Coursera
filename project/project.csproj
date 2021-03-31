@@ -149,9 +149,15 @@
     <Compile Include="Migrations\202103180858471_database-first.designer.cs">
       <DependentUpon>202103180858471_database-first.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103311413064_add-new-table.cs" />
+    <Compile Include="Migrations\202103311413064_add-new-table.Designer.cs">
+      <DependentUpon>202103311413064_add-new-table.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Answer.cs" />
     <Compile Include="Models\Course.cs" />
+    <Compile Include="Models\Feature.cs" />
+    <Compile Include="Models\GroupFeature.cs" />
     <Compile Include="Models\Lession.cs" />
     <Compile Include="Models\Point.cs" />
     <Compile Include="Models\Question.cs" />
@@ -355,6 +361,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103180858471_database-first.resx">
       <DependentUpon>202103180858471_database-first.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103311413064_add-new-table.resx">
+      <DependentUpon>202103311413064_add-new-table.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
