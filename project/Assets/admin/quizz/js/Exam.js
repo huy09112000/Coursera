@@ -81,6 +81,7 @@ function startExam(id) {
         $(this).css('display','none');
         $('#start__exam').css('display', 'none');
         $('.main-carousel').addClass("transformVisible");
+        $('.submit__button').addClass("transformVisible");
     });
     $('#start__exam').removeClass('bounding');
 
@@ -103,14 +104,14 @@ function initTesting(res) {
         let lstAns = qes.Answers;
         let ans = ``;
         for (var j = 0; j < lstAns.length; j++) {
-            ans += ` <label class="answer" onclick="hightLight()" id="ans-${lstAns[j].Id}">
+            ans += ` <label class="answer" onclick="hightLight()" id="ans-${lstAns[j].Id}-${qes.Id}">
                         ${lstAns[j].Content}
                         <input type="radio" name="ans-${qes.Id}-radio" />
                     </label>`;
         }
         let item = `<div class="carouser_ques" id="qes-${qes.Id}">
                 <div class="num_ques">
-                    <span>Question: ${i+1}</span>
+                    <span>Question: ${i + 1}</span>
                 </div>
                 <div class="carouser_point">
                     <span>Point: ${qes.Point}</span>
@@ -121,8 +122,7 @@ function initTesting(res) {
                 <div class="carouser_answer">
                         ${ans}
                 </div>
-            </div>`
-        console.log(1, item);
+            </div>`;
         $('.main-carousel').append(item);
     }
     $('.main-carousel').flickity({
@@ -136,4 +136,19 @@ function initTesting(res) {
 function hightLight() {
     $('input[type="radio"]').parent().css('background-color', '#006699');
     $('input[type="radio"]:checked').parent().css('background-color', '#00017A');
+}
+
+function submitExam(quizzId) {
+    let result =[];
+    let submit_result = $('.carouser_answer').children();
+    submit_result.each(function (index) {
+        if ($(this).children()[0].checked) {
+            let lstId = $(this)[0].id.split("-");
+            result.push({ans:lstId[1],ques:lstId[2]});
+        }
+    });
+    console.log(result);
+    HTTPPost('/quizz/result', { data: result, id: quizzId}, function (res) {
+        console.log(res);
+    })
 }

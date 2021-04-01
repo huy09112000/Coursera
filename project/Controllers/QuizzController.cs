@@ -118,8 +118,10 @@ namespace project.Controllers
             }
         }
         [HttpPost]
-        public ActionResult AfterSubmit()
+        [ActionName("result")]
+        public ActionResult AfterSubmit(List<AnswerOnSubmitDTO> data, int id)
         {
+
             return View();
         }
         [HttpGet]

@@ -196,6 +196,8 @@
     <Compile Include="Models\Answer.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\DTO\AnswerDTO.cs" />
+    <Compile Include="Models\DTO\AnswerOnSubmitDTO.cs" />
+    <Compile Include="Models\DTO\PointAfterSubmitDTO.cs" />
     <Compile Include="Models\Feature.cs" />
     <Compile Include="Models\GroupFeature.cs" />
     <Compile Include="Models\DTO\CourseDTO.cs" />
