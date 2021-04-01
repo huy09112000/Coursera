@@ -17,9 +17,9 @@ namespace project.Models
         public string Password { get; set; }
         public int Role { get; set; }
         public string Avatar { get; set; }
-       
-         public UserInfor UserInfor { get; set; }
 
+        public UserInfor UserInfor { get; set; }
         public ICollection<Feature> features { get; set; }
+
     }
 }

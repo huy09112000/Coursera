@@ -169,6 +169,7 @@
     <Compile Include="Controllers\SubjectController.cs" />
     <Compile Include="Controllers\QuizzController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="DAL\DataProvider.cs" />
     <Compile Include="DAL\EducationDBContext.cs" />
     <Compile Include="DAL\Seed\EducationInitializer.cs" />
     <Compile Include="Global.asax.cs">
@@ -227,6 +228,7 @@
     <Compile Include="Shared\ConfigMap\QuestionProfile.cs" />
     <Compile Include="Shared\ConfigMap\QuizzProfile.cs" />
     <Compile Include="Shared\ConfigMap\SubjectProfile.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\admin\dist\css\animate.css" />
@@ -239,6 +241,7 @@
     <Content Include="Assets\admin\dist\css\flaticon.css" />
     <Content Include="Assets\admin\dist\css\font-awesome.css" />
     <Content Include="Assets\admin\dist\css\font-awesome.min.css" />
+    <Content Include="Assets\admin\dist\css\loginCSS.css" />
     <Content Include="Assets\admin\dist\css\owl.carousel.css" />
     <Content Include="Assets\admin\dist\css\prettyPhoto.css" />
     <Content Include="Assets\admin\dist\css\pr_loading.css" />
@@ -251,6 +254,7 @@
     <Content Include="Assets\admin\dist\js\01-custom-places-example.js" />
     <Content Include="Assets\admin\dist\js\all.js" />
     <Content Include="Assets\admin\dist\js\custom.js" />
+    <Content Include="Assets\admin\dist\js\loginJS.js" />
     <Content Include="Assets\admin\dist\js\mapsed.js" />
     <Content Include="Assets\admin\dist\js\modernizer.js" />
     <Content Include="Assets\admin\dist\js\timeline.min.js" />
@@ -371,6 +375,12 @@
     <Content Include="Assets\admin\dist\fonts\fontawesome-webfont.woff" />
     <Content Include="Assets\admin\dist\fonts\fontawesome-webfont.woff2" />
     <Content Include="Assets\admin\dist\fonts\FontAwesome.otf" />
+    <Content Include="libman.json" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -394,7 +404,6 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Users\Create.cshtml" />
@@ -423,11 +432,17 @@
     <Content Include="Views\Subject\Subject.cshtml" />
     <Content Include="Views\Lesson\Lesson.cshtml" />
     <Content Include="Views\Lesson\Content.cshtml" />
+    <Content Include="Views\Login\Contact.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Home\Register.cshtml" />
+    <Content Include="Views\Home\ForgotPassword.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="lib\font-awesome\" />
     <Folder Include="Views\Hellword\" />
+    <Folder Include="Views\Register\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
