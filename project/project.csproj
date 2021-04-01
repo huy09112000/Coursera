@@ -188,13 +188,14 @@
     <Compile Include="Migrations\202103180858471_database-first.designer.cs">
       <DependentUpon>202103180858471_database-first.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202103311413064_add-new-table.cs" />
-    <Compile Include="Migrations\202103311413064_add-new-table.Designer.cs">
-      <DependentUpon>202103311413064_add-new-table.cs</DependentUpon>
+    <Compile Include="Migrations\202103311520132_add-new-table.cs" />
+    <Compile Include="Migrations\202103311520132_add-new-table.Designer.cs">
+      <DependentUpon>202103311520132_add-new-table.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Answer.cs" />
     <Compile Include="Models\Course.cs" />
+    <Compile Include="Models\DTO\AnswerDTO.cs" />
     <Compile Include="Models\Feature.cs" />
     <Compile Include="Models\GroupFeature.cs" />
     <Compile Include="Models\DTO\CourseDTO.cs" />
@@ -212,6 +213,7 @@
     <Compile Include="Models\UserInfor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shared\AutoMap.cs" />
+    <Compile Include="Shared\ConfigMap\AnswerProfile.cs" />
     <Compile Include="Shared\ConfigMap\LessonProfile.cs" />
     <Compile Include="Shared\ConfigMap\QuestionProfile.cs" />
     <Compile Include="Shared\ConfigMap\QuizzProfile.cs" />
@@ -437,6 +439,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103180858471_database-first.resx">
       <DependentUpon>202103180858471_database-first.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103311520132_add-new-table.resx">
+      <DependentUpon>202103311520132_add-new-table.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

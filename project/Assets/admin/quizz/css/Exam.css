@@ -2,34 +2,39 @@
     0% {
         transform: translateX(450%) scale(1,.3);
     }
-
     40% {
-        transform: translateX(-74%) scale(1,.3);
+        transform: translateX(-17%) scale(1,.3);
     }
-    /*35% {
-        transform: translateX(-74%) scale(.9,.5);
-    }*/
     40% {
-        transform: translateX(-74%) scale(1,.9);
+        transform: translateX(-17%) scale(1,.9);
     }
 
     50% {
-        transform: translateX(-104%) scale(.3,1);
+        transform: translateX(-52%) scale(.3,1);
     }
-    /* 55% {
-        transform: translateX(-84%) scale(.5,1);
-    }
-    60%{
-        transform:translateX(-94%) scale(.4,1);
-    }
-    65%{
-        transform:translateX(-104%) scale(.3,1);
-    }*/
+   
     100% {
         transform: translateX(0) scale(1,1);
     }
 }
-
+@keyframes boundingOut{
+    0%{
+        transform:translateX(0) scale(1,1);
+    }
+   
+    10%{
+        transform:translateX(0) scale(.6,1.2);
+    }
+    40%{
+        transform:translateX(0) scale(1,.4);
+    }
+    100%{
+        transform:translateX(450%) scale(1,.4);
+    }
+}
+.list__container{
+    height:800px;
+}
 .clock {
     display: flex;
     position: absolute;
@@ -106,17 +111,22 @@
     height: 250px;
     background: #00AFA6;
     border-radius: 50%;
-    top: 180px;
+    top: 230px;
     display: flex;
     justify-content: center;
     align-items: center;
     box-shadow: inset -10px -10px 100px #000000c4, 0 0 0 #00AFA6, inset 0px 0px 10px #00000094;
     animation: pulse 2s infinite;
+    cursor: pointer;
 }
 
 .bounding {
     animation: 2s ease 2s 1 bounding;
     animation-fill-mode: both;
+}
+.boundingOut{
+    animation:2s ease 0s 1 boundingOut;
+    animation-fill-mode:both;
 }
 
 .start__exam::after {
@@ -144,8 +154,8 @@
 
 .quizz__overview {
     position: absolute;
-    top: 50px;
-    left: 100px;
+    top: 110px;
+    left: 50px;
 }
 
     .quizz__overview .row {
@@ -225,3 +235,97 @@ span.circle {
     box-shadow: 0 0 0 11px transparent;
     margin: 5px 6px;
 }
+.main-carousel {
+    position: relative;
+    top: 150px;
+    width: 85vw;
+    height: 600px;
+    padding: 0 3em;
+    --r: 15px;
+    border-radius: calc(2*var(--r));
+    border: 15px solid #f7bb03;
+    box-shadow: inset 0 0 20px 20px #9c2492;
+    background: linear-gradient(#f540ce, #bb11a0);
+    opacity:0;
+    visibility:hidden;
+}
+.carouser_ques {
+    color: white;
+    width: inherit;
+    height: auto;
+}
+.num_ques {
+    background: #f7bb03;
+    width: 160px;
+    padding: 5px 10px;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    border-radius: 20px;
+    text-align: center;
+}
+    .num_ques span {
+        font-size: 24px;
+        font-family: 'futura-book';
+    }
+.carouser_point {
+    background: #f7bb03;
+    width: 160px;
+    padding: 5px 10px;
+    position: absolute;
+    top: 57px;
+    right: 0;
+    border-radius: 20px;
+    text-align: center;
+}
+    .carouser_point span {
+        font-size: 20px;
+        font-family: 'futura-book';
+    }
+.carouser_content {
+    width: 100%;
+    padding: 20px;
+    margin-top: 150px;
+}
+    .carouser_content span {
+        font-size: 30px;
+        width: 100%;
+    }
+.carouser_answer {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.answer {
+    background: #006699;
+    margin: 10px;
+    padding: 10px 20px;
+    flex: 1 48%;
+    border: 3px solid #FEC203;
+    border-radius: 25px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+[type="radio"]{
+    visibility:hidden
+}
+.flickity-page-dots {
+    position: absolute;
+    width: 100%;
+    bottom: -40px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    text-align: center;
+    line-height: 1;
+}
+    .flickity-page-dots .dot {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        margin: 0 8px;
+        background: #333;
+        border-radius: 50%;
+        opacity: .25;
+        cursor: pointer;
+    }

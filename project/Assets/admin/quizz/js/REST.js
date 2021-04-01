@@ -2,7 +2,7 @@
 	return $.getJSON(u, d, callback);
 }
 function HTTPPost(u, d, callback) {
-	return $.post(u,d,callback(data,status,xhr),'json');
+	return $.post(u,d,callback,'json');
 }
 function HTTPPut(u, d, callback) {
 	return $.ajax({

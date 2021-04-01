@@ -54,14 +54,14 @@ namespace project
                 );
             routes.MapRoute(
                 name:"AfterTest",
-                url:"quizz/result",
-                    defaults: new {Controller="Quizz",Action="AfterTesting"}
+                url: "quizz/result",
+                    defaults: new {Controller= "Quizz", Action="AfterTesting"}
                 );
             routes.MapRoute(
                 name:"GetTest",
-                url:"quizz/exam/{quizzId}",
-                defaults: new {Controller="Quizz",Action= "OnTesting" },
-                constraints: new {quizzId=@"\d+"}
+                url: "quizz/exam/{quizzId}",
+                defaults: new {Controller= "Quizz", Action= "OnTesting" },
+                constraints: new { quizzId = @"\d+"}
                 );
         }
     }

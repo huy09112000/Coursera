@@ -20,6 +20,7 @@ namespace project.Shared
                    config.AddProfile<LessonProfile>();
                    config.AddProfile<QuizzProfile>();
                    config.AddProfile<QuestionProfile>();
+                   config.AddProfile<AnswerProfile>();
                });
 
             Mapper = mapperConfiguration.CreateMapper();

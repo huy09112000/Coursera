@@ -31,6 +31,14 @@
     setTimer(dozen_second, dozen_second, 'dozen_second');
     setTimer(second, second, 'second');
 
+
+    $('.main-carousel').flickity({
+        // options
+        cellAlign: 'left',
+        contain: true,
+        adaptiveHeight: true,
+        wrapAround: true
+    });
 });
 
 function getNumTimer(number) {
@@ -63,4 +71,56 @@ function setTimer(up, down, id) {
                 </span><span class='count next bottom flipBottom'>${up} 
                 </span><span class='count curr bottom'>${up}</span>`;
     document.getElementById(id).innerHTML = data;
+}
+
+function startExam(id) {
+    $('#start__exam').on("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function (event) {
+        //console.log(1, event.originalEvent.animationName);
+        //$(this).removeClass("bounding");
+        if (event.originalEvent.animationName === "boundingOut") {
+            $('.quizz__overview').children().each(function () {
+                $(this).addClass('fadeOutRight');
+            });
+        }
+    });
+    $('.quizz__overview').on("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function (event) {
+        $(this).css('display','none');
+        $('#start__exam').css('display', 'none');
+        $('.main-carousel').addClass("transformVisible");
+    });
+    $('#start__exam').removeClass('bounding');
+
+    $('#start__exam').addClass('boundingOut');
+
+    HTTPGet('/quizz/exam', { quizzId: id }, initTesting)
+        .done(function () { })
+        .fail(function (jqxhr, setting, ex) { console.log(ex) });
+}
+
+function initTesting(res) {
+    console.log(1, res);
+    let data = res.data;
+
+    for (var i = 0; i < data.length; i++) {
+        let qes = data[i];
+        let item = `<div class="carouser_ques" id="qes-${qes.Id}">
+                <div class="num_ques">
+                    <span>Question: ${i+1}</span>
+                </div>
+                <div class="carouser_point">
+                    <span>Point: ${qes.Point}</span>
+                </div>
+                <div class="carouser_content">
+                    <span>${qes.Content}</span>
+                </div>
+                <div class="carouser_answer">
+
+                </div>
+            </div>`
+
+    }
+}
+function hightLight() {
+    $('input[type="radio"]').parent().css('background-color', '#006699');
+    $('input[type="radio"]:checked').parent().css('background-color', '#00017A');
 }

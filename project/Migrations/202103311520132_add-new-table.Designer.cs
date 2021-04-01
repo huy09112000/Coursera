@@ -13,7 +13,7 @@ namespace project.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202103311413064_add-new-table"; }
+            get { return "202103311520132_add-new-table"; }
         }
         
         string IMigrationMetadata.Source
