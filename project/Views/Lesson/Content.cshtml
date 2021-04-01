@@ -4,10 +4,13 @@
     ViewBag.Title = "Content";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div>
+<div style="display: flex;margin-left: 50px;margin-right: 50px">
     @foreach (var item in ViewBag.contents)
     {
-    <h2>@item.Name</h2>
-    <div>@item.Content</div>
+        <div style="margin-right: 50px">
+            <h2>@item.Name</h2>
+            @item.Content
+        </div>
+        <div><iframe width="560" height="315" src=@item.Url title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
     }
 </div>

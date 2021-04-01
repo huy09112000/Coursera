@@ -13,15 +13,7 @@ namespace project.Controllers
         //cac home controller se phai check exist session va check authorization tu list
         public ActionResult Index()
         {
-            if (Session["account"] != null)
-            {
-                //exist 
-                if (checkAuthentication())
-                {
-                    return View();
-                }
-            }
-            return View("Error");
+            return View();
         }
 
         public bool checkAuthentication()
@@ -42,28 +34,12 @@ namespace project.Controllers
 
         public ActionResult About()
         {
-            if (Session["account"] != null)
-            {
-                //exist 
-                if (checkAuthentication())
-                {
-                    return View();
-                }
-            }
-            return View("Error");
+            return View();
         }
 
         public ActionResult Contact()
         {
-            if (Session["account"] != null)
-            {
-                //exist 
-                if (checkAuthentication())
-                {
-                    return View();
-                }
-            }
-            return View("Error");
+            return View();
         }
 
         public ActionResult Login()
