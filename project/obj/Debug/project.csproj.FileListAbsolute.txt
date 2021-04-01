@@ -286,3 +286,4 @@ C:\Users\ADMIN\Source\Repos\SE1414-C--Webform-Team3\project\obj\Debug\project.cs
 C:\Users\ADMIN\Source\Repos\SE1414-C--Webform-Team3\project\obj\Debug\project.csproj.CopyComplete
 C:\Users\ADMIN\Source\Repos\SE1414-C--Webform-Team3\project\obj\Debug\project.dll
 C:\Users\ADMIN\Source\Repos\SE1414-C--Webform-Team3\project\obj\Debug\project.pdb
+D:\homework\major\c#_On_Class\project\SE1414-C--Webform-Team3\project\obj\Debug\project.Migrations.addpropertygroupfeature.resources

@@ -1,4 +1,27 @@
-﻿$(document).ready(function () {
+﻿
+const WARNING_THRESHOLD = 10;
+const ALERT_THRESHOLD = 5;
+
+
+const COLOR_CODES = {
+    info: {
+        color: "green"
+    },
+    warning: {
+        color: "orange",
+        threshold: WARNING_THRESHOLD
+    },
+    alert: {
+        color: "red",
+        threshold: ALERT_THRESHOLD
+    }
+};
+
+let timerInterval = null;
+let remainingPathColor = COLOR_CODES.info.color;
+const FULL_DASH_ARRAY = 283;
+
+$(document).ready(function () {
     //set up level
     let objId = $('#level').children()[2].id;
     let level = objId.split("-")[1];
@@ -17,57 +40,38 @@
     });
 
     //set up timer
-    let timerId = $('#timer').children()[1].id;
-    let time = parseInt(timerId.split("-")[1]) * 60;
-    let lstTime = getNumTimer(time);
-    let hunded_minute = lstTime[2];
-    let doze_minute = lstTime[1];
-    let minute = lstTime[0];
-    let dozen_second = lstTime[4];
-    let second = lstTime[3];
-    setTimer(hunded_minute, hunded_minute, 'hundred_minute');
-    setTimer(doze_minute, doze_minute, 'dozen_minute');
-    setTimer(minute, minute, 'minute');
-    setTimer(dozen_second, dozen_second, 'dozen_second');
-    setTimer(second, second, 'second');
+    let timeLeft = $('.quizz__time').children()[1].id.split("-")[1] * 60 * 60;
+    document.getElementById("clock").innerHTML = `
+<div class="base-timer">
+  <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <g class="base-timer__circle">
+      <circle class="base-timer__path-elapsed" cx="50" cy="50" r="45"></circle>
+      <path
+        id="base-timer-path-remaining"
+        stroke-dasharray="283"
+        class="base-timer__path-remaining ${remainingPathColor}"
+        d="
+          M 50, 50
+          m -45, 0
+          a 45,45 0 1,0 90,0
+          a 45,45 0 1,0 -90,0
+        "
+      ></path>
+    </g>
+  </svg>
+  <span id="base-timer-label" class="base-timer__label">${formatTime(timeLeft)}</span>
+</div>
+`;
 
 
-   
 });
 
-function getNumTimer(number) {
-    let a = [];
-    let second = -1;
-    if ((number * 60) % 60 !== 0) {
-        second = (number * 60) % 60;
-    }
-    while (number > 0) {
-        a.push(number % 10);
-        number = Math.floor(number / 10);
-    }
-    if (second !== -1) {
-        while (second > 0) {
-            a.push(second % 10);
-            second = Math.floor(second / 10);
-        }
-    }
-    a.push(0);
-    a.push(0);
-    a.push(0);
-    a.push(0);
-    a.push(0);
-    return a;
-}
 
-function setTimer(up, down, id) {
-    let data = `<span class='count curr top flipTop'> ${down} 
-                </span><span class='count next top'> ${up} 
-                </span><span class='count next bottom flipBottom'>${up} 
-                </span><span class='count curr bottom'>${up}</span>`;
-    document.getElementById(id).innerHTML = data;
-}
+function startExam(id, time) {
+    const TIME_LIMIT = $('.quizz__time').children()[1].id.split("-")[1] * 60 * 60;
+    let timeLeft = TIME_LIMIT;
 
-function startExam(id) {
+    //animation handle
     $('#start__exam').on("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function (event) {
         //console.log(1, event.originalEvent.animationName);
         //$(this).removeClass("bounding");
@@ -78,18 +82,24 @@ function startExam(id) {
         }
     });
     $('.quizz__overview').on("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function (event) {
-        $(this).css('display','none');
+        $(this).css('display', 'none');
         $('#start__exam').css('display', 'none');
         $('.main-carousel').addClass("transformVisible");
         $('.submit__button').addClass("transformVisible");
+        $('.clock').css('visibility', 'visible');
     });
     $('#start__exam').removeClass('bounding');
 
     $('#start__exam').addClass('boundingOut');
 
+    //get data from serve
     HTTPGet('/quizz/exam', { quizzId: id }, initTesting)
-        .done(function () { })
+        .done(function () {
+            startTimer(timeLeft, TIME_LIMIT);
+        })
         .fail(function (jqxhr, setting, ex) { console.log(ex) });
+
+
 }
 
 function initTesting(res) {
@@ -133,22 +143,90 @@ function initTesting(res) {
         wrapAround: true
     });
 }
+
+
 function hightLight() {
-    $('input[type="radio"]').parent().css('background-color', '#006699');
+    $('input[type="radio"]').parent().css('background-color', '#01476a');
     $('input[type="radio"]:checked').parent().css('background-color', '#00017A');
 }
 
 function submitExam(quizzId) {
-    let result =[];
+    let result = [];
     let submit_result = $('.carouser_answer').children();
     submit_result.each(function (index) {
         if ($(this).children()[0].checked) {
             let lstId = $(this)[0].id.split("-");
-            result.push({ans:lstId[1],ques:lstId[2]});
+            result.push({ ans: lstId[1], ques: lstId[2] });
         }
     });
     console.log(result);
-    HTTPPost('/quizz/result', { data: result, id: quizzId}, function (res) {
-        console.log(res);
+    HTTPPost('/quizz/result', { data: result, id: quizzId }, function (res) {
+        
     })
+}
+
+function onTimesUp() {
+    clearInterval(timerInterval);
+}
+
+function startTimer(timeLeft, TIME_LIMIT) {
+    let timePassed = 0;
+
+    timerInterval = setInterval(() => {
+        timePassed = timePassed += 1;
+        timeLeft = TIME_LIMIT - timePassed;
+        document.getElementById("base-timer-label").innerHTML = formatTime(
+            timeLeft
+        );
+        setCircleDasharray(timeLeft, TIME_LIMIT);
+        setRemainingPathColor(timeLeft);
+
+        if (timeLeft === 0) {
+            onTimesUp();
+        }
+    }, 1000);
+}
+
+function formatTime(time) {
+    const minutes = Math.floor(time / 60);
+    let seconds = time % 60;
+
+    if (seconds < 10) {
+        seconds = `0${seconds}`;
+    }
+
+    return `${minutes}:${seconds}`;
+}
+
+function setRemainingPathColor(timeLeft) {
+    const { alert, warning, info } = COLOR_CODES;
+    if (timeLeft <= alert.threshold) {
+        document
+            .getElementById("base-timer-path-remaining")
+            .classList.remove(warning.color);
+        document
+            .getElementById("base-timer-path-remaining")
+            .classList.add(alert.color);
+    } else if (timeLeft <= warning.threshold) {
+        document
+            .getElementById("base-timer-path-remaining")
+            .classList.remove(info.color);
+        document
+            .getElementById("base-timer-path-remaining")
+            .classList.add(warning.color);
+    }
+}
+
+function calculateTimeFraction(timeLeft, TIME_LIMIT) {
+    const rawTimeFraction = timeLeft / TIME_LIMIT;
+    return rawTimeFraction - (1 / TIME_LIMIT) * (1 - rawTimeFraction);
+}
+
+function setCircleDasharray(timeLeft, TIME_LIMIT) {
+    const circleDasharray = `${(
+        calculateTimeFraction(timeLeft, TIME_LIMIT) * FULL_DASH_ARRAY
+    ).toFixed(0)} 283`;
+    document
+        .getElementById("base-timer-path-remaining")
+        .setAttribute("stroke-dasharray", circleDasharray);
 }

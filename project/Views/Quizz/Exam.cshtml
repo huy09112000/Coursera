@@ -10,45 +10,14 @@
 @Styles.Render("~/Assets/admin/quizz/css/Exam.css")
 
 <div class="list_background">
-    <div class="title__page" onclick="window.location.href = '@Url.Content("~/Quizz/Lesson/"+ViewBag.lessonId+"/"+ViewBag.quizzId)'">
+    <div class="title__page" onclick="window.location.href = '@Url.Content("~/Quizz/Course")'">
         <div class="title__arrow right"></div>
         <h2>Exam</h2>
     </div>
     <div class="list__container" id="lstExam">
-        <div class="clock">
-            <div class="time" id="hundred_minute">
-                <span class="count top flipTop">1</span>
-                <span class="count top">0</span>
-                <span class="count bottom flipBottom">0</span>
-                <span class="count bottom">1</span>
-            </div>
-            <div class="time t-d-1" id="dozen_minute">
-                <span class="count top flipTop">1</span>
-                <span class="count top">0</span>
-                <span class="count bottom flipBottom">0</span>
-                <span class="count bottom">1</span>
-            </div>
-            <div class="time t-d-1_5" id="minute">
-                <span class="count top flipTop">1</span>
-                <span class="count top">0</span>
-                <span class="count bottom flipBottom">0</span>
-                <span class="count bottom">1</span>
-            </div>
-            <div class="time__divider">:</div>
-            <div class="time t-d-1_5" id="dozen_second">
-                <span class="count top flipTop">1</span>
-                <span class="count top">0</span>
-                <span class="count bottom flipBottom">0</span>
-                <span class="count bottom">1</span>
-            </div>
-            <div class="time t-d-2" id="second">
-                <span class="count top flipTop">1</span>
-                <span class="count top">0</span>
-                <span class="count bottom flipBottom">0</span>
-                <span class="count bottom">1</span>
-            </div>
+        <div class="clock" id="clock" >
         </div>
-        <div class="start__exam bounding" id="start__exam" onclick="startExam('@Model.Id')">
+        <div class="start__exam bounding" id="start__exam" onclick="startExam('@Model.Id', '@Model.time')">
             <span>Start</span>
         </div>
         <div class="quizz__overview">

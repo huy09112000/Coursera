@@ -195,6 +195,10 @@
     <Compile Include="Migrations\202103311520132_add-new-table.Designer.cs">
       <DependentUpon>202103311520132_add-new-table.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202104011035272_add-property-group-feature.cs" />
+    <Compile Include="Migrations\202104011035272_add-property-group-feature.Designer.cs">
+      <DependentUpon>202104011035272_add-property-group-feature.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Answer.cs" />
     <Compile Include="Models\Course.cs" />
@@ -373,6 +377,8 @@
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.countdown.js" />
+    <Content Include="Scripts\jquery.countdown.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -451,6 +457,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103311520132_add-new-table.resx">
       <DependentUpon>202103311520132_add-new-table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104011035272_add-property-group-feature.resx">
+      <DependentUpon>202104011035272_add-property-group-feature.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
