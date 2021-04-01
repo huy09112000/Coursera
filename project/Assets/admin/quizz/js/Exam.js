@@ -32,13 +32,7 @@
     setTimer(second, second, 'second');
 
 
-    $('.main-carousel').flickity({
-        // options
-        cellAlign: 'left',
-        contain: true,
-        adaptiveHeight: true,
-        wrapAround: true
-    });
+   
 });
 
 function getNumTimer(number) {
@@ -99,10 +93,21 @@ function startExam(id) {
 
 function initTesting(res) {
     console.log(1, res);
+
+    $('.main-carousel').empty();
+
     let data = res.data;
 
     for (var i = 0; i < data.length; i++) {
         let qes = data[i];
+        let lstAns = qes.Answers;
+        let ans = ``;
+        for (var j = 0; j < lstAns.length; j++) {
+            ans += ` <label class="answer" onclick="hightLight()" id="ans-${lstAns[j].Id}">
+                        ${lstAns[j].Content}
+                        <input type="radio" name="ans-${qes.Id}-radio" />
+                    </label>`;
+        }
         let item = `<div class="carouser_ques" id="qes-${qes.Id}">
                 <div class="num_ques">
                     <span>Question: ${i+1}</span>
@@ -114,11 +119,19 @@ function initTesting(res) {
                     <span>${qes.Content}</span>
                 </div>
                 <div class="carouser_answer">
-
+                        ${ans}
                 </div>
             </div>`
-
+        console.log(1, item);
+        $('.main-carousel').append(item);
     }
+    $('.main-carousel').flickity({
+        // options
+        cellAlign: 'left',
+        contain: true,
+        adaptiveHeight: true,
+        wrapAround: true
+    });
 }
 function hightLight() {
     $('input[type="radio"]').parent().css('background-color', '#006699');

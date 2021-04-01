@@ -125,10 +125,13 @@
     animation-fill-mode: both;
 }
 .boundingOut{
-    animation:2s ease 0s 1 boundingOut;
-    animation-fill-mode:both;
+    animation:2s ease 0s 1 boundingOut, pulse 2s infinite !important;
+    animation-fill-mode:both !important;
 }
 
+    .boundingOut:hover {
+        animation: pulse 2s infinite !important;
+    }
 .start__exam::after {
     /*background-color: rgba(255, 255, 255, 0.3);*/
     content: '';
