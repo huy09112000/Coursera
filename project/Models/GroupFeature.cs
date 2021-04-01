@@ -15,6 +15,8 @@ namespace project.Models
         public int Id { get; set; }
         [Required,Range(0,3)]
         public int Role { get; set; }
+
+        public int Feature_id { get; set; }
         public ICollection<Feature>features { get; set; }
     }
 }
