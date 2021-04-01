@@ -163,7 +163,10 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LessonController.cs" />
+    <Compile Include="Controllers\SubjectController.cs" />
     <Compile Include="Controllers\QuizzController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="DAL\EducationDBContext.cs" />
@@ -410,6 +413,10 @@
     <Content Include="wwwroot\lib\font-awesome\webfonts\fa-solid-900.ttf" />
     <Content Include="wwwroot\lib\font-awesome\webfonts\fa-solid-900.woff" />
     <Content Include="wwwroot\lib\font-awesome\webfonts\fa-solid-900.woff2" />
+    <Content Include="Views\Course\Course.cshtml" />
+    <Content Include="Views\Subject\Subject.cshtml" />
+    <Content Include="Views\Lesson\Lesson.cshtml" />
+    <Content Include="Views\Lesson\Content.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
