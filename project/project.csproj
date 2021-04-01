@@ -126,8 +126,6 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Code\SessionHelper.cs" />
-    <Compile Include="Code\UserSession.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="DAL\DataProvider.cs" />
@@ -302,7 +300,7 @@
     <Content Include="Assets\admin\dist\fonts\fontawesome-webfont.woff" />
     <Content Include="Assets\admin\dist\fonts\fontawesome-webfont.woff2" />
     <Content Include="Assets\admin\dist\fonts\FontAwesome.otf" />
-	  <Content Include="libman.json" />
+    <Content Include="libman.json" />
     <Content Include="fonts\FontAwesome.otf" />
     <Content Include="fonts\fontawesome-webfont.woff2" />
     <Content Include="fonts\fontawesome-webfont.woff" />
@@ -345,6 +343,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Code\" />
     <Folder Include="Views\Hellword\" />
     <Folder Include="Views\Register\" />
   </ItemGroup>

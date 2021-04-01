@@ -27,13 +27,31 @@ namespace project.Views.Home
             {
                 DataTable dataTable = new DataTable();
 
-                dataTable = new DataProvider().executeQuery("SELECT * FROM [EducationDB].[dbo].[Users] where Email = '" + acc.Email + "' and Password = '" + acc.Password + "'");
+                dataTable = new DataProvider().executeQuery("SELECT [Url] FROM Users as us left join Group_Feature as gf on us.Role = gf.Role left join Feature as f on gf.Feature_id = f.Feature_id where us.Email = '" + acc.Email + "' and us.Password = '" + acc.Password + "'");
                 if (dataTable != null && dataTable.Rows.Count > 0)
                 {
                     //exist thi load them list<authorization> cho object roi sau do tạo session để lơi data
-                    // 
-                    Session["account"] = acc;
-                    return View("Contact");
+                    User accessAccount = new User();
+                    accessAccount.Email = acc.Email;
+                    accessAccount.Password = acc.Password;
+
+                    accessAccount.features = new List<Feature>();
+                    //add authorize for object
+                    foreach (DataRow row in dataTable.Rows)
+                    {
+                        foreach (var item in row.ItemArray)
+                        {
+                            Feature f = new Feature();
+                            f.Url = item.ToString();
+                            //loi o day
+                            accessAccount.features.Add(f);
+                        }
+                    }
+
+                    //create session
+                    Session["account"] = accessAccount;
+                    //first para is action name, second is controller name
+                    return RedirectToAction("About", "Home");
                 }
                 else
                 {

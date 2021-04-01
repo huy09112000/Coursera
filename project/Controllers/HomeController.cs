@@ -1,4 +1,5 @@
-﻿using System;
+﻿using project.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,21 +13,57 @@ namespace project.Controllers
         //cac home controller se phai check exist session va check authorization tu list
         public ActionResult Index()
         {
+            if (Session["account"] != null)
+            {
+                //exist 
+                if (checkAuthentication())
+                {
+                    return View();
+                }
+            }
+            return View("Error");
+        }
 
-            return View();
+        public bool checkAuthentication()
+        {
+            string absolutepath = HttpContext.Request.Url.AbsolutePath;
+            //check authorize
+            User user = (User)Session["account"];
+            foreach (var item in user.features)
+            {
+                if (item.Url.Equals(absolutepath))
+                {
+                    //if equal
+                    return true;
+                }
+            }
+            return false;
         }
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
+            if (Session["account"] != null)
+            {
+                //exist 
+                if (checkAuthentication())
+                {
+                    return View();
+                }
+            }
+            return View("Error");
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
-            return View();
+            if (Session["account"] != null)
+            {
+                //exist 
+                if (checkAuthentication())
+                {
+                    return View();
+                }
+            }
+            return View("Error");
         }
 
         public ActionResult Login()
