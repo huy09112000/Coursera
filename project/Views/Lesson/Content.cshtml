@@ -1,0 +1,13 @@
+﻿@model project.Models.Lession
+
+@{
+    ViewBag.Title = "Content";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div>
+    @foreach (var item in ViewBag.contents)
+    {
+    <h2>@item.Name</h2>
+    <div>@item.Content</div>
+    }
+</div>

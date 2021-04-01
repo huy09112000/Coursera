@@ -126,7 +126,10 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LessonController.cs" />
+    <Compile Include="Controllers\SubjectController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="DAL\EducationDBContext.cs" />
     <Compile Include="DAL\Seed\EducationInitializer.cs" />
@@ -331,6 +334,10 @@
     <Content Include="Views\Users\Edit.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Course\Course.cshtml" />
+    <Content Include="Views\Subject\Subject.cshtml" />
+    <Content Include="Views\Lesson\Lesson.cshtml" />
+    <Content Include="Views\Lesson\Content.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

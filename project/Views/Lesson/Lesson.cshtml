@@ -1,0 +1,23 @@
+﻿@model project.Models.Lession
+
+@{
+    ViewBag.Title = "Lesson";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="margin: 10px;font-size:40px">Lessons</h2>
+<table class="table table-bordered">
+    <tbody>
+        @foreach (var item in ViewBag.lessons)
+        {
+            <tr>
+                <td><a href="../Lesson/Content?Id=@item.Id">@item.Name</td>
+                <td>@item.Describtion</td>
+                <td>
+                    <img src="https://image.flaticon.com/icons/png/512/65/65000.png" style="height: 20px;width: 20px"/> 
+                    @item.View
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
