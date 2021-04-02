@@ -164,6 +164,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CourseController.cs" />
+    <Compile Include="Controllers\CourseManagementController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LessonController.cs" />
     <Compile Include="Controllers\SubjectController.cs" />
@@ -427,6 +428,11 @@
     <Content Include="Views\Login\ForgotPassword.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Quizz\AfterSubmit.cshtml" />
+    <Content Include="Views\CourseManagement\CreateCourse.cshtml" />
+    <Content Include="Views\CourseManagement\CreateSubject.cshtml" />
+    <Content Include="Views\CourseManagement\CreateLession.cshtml" />
+    <Content Include="Views\CourseManagement\CreateQiuzz.cshtml" />
+    <Content Include="Views\CourseManagement\HomeCreate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
