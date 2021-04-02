@@ -1,0 +1,8 @@
+﻿.quizz__des {
+    display: flex;
+    flex-direction: column;
+}
+    .quizz__des span {
+        font-size: 15px;
+        /* margin: 5px 5px; */
+    }

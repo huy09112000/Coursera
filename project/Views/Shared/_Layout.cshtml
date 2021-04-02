@@ -1,5 +1,7 @@
-﻿@model project.Models.User
-
+﻿@using project.Models
+@{
+    User login = new User();
+}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -81,76 +83,73 @@
                     <!-- Tab panes -->
                     <div class="tab-content">
                         <div class="tab-pane active" id="Login">
-                            @using (Html.BeginForm("Verify", "Login", FormMethod.Post))
-                            {
-                                <form role="form" class="form-horizontal">
-                                    <div class="form-group">
-                                        <div class="col-sm-12">
-                                            @Html.TextBoxFor(Model => Model.Email, htmlAttributes: new { placeholder = "Email", @class = "form-control" })
-                                        </div>
+                            @*@using (Html.BeginForm("Verify", "Login", FormMethod.Post))
+                                {*@
+                            <form role="form" class="form-horizontal" action="/login/verify" method="post">
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <input class="form-control" name="email" placeholder="Email" type="email">
                                     </div>
-                                    <div class="form-group">
-                                        <div class="col-sm-12">
-                                            @Html.TextBoxFor(Model => Model.Password, htmlAttributes: new { placeholder = "Password", @class = "form-control" })
-                                            Password
-                                        </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <input class="form-control" name="pass" placeholder="Password" type="password">
                                     </div>
-                                    <div class="row">
-                                        <div class="col-sm-10">
-                                            <!--forgot password-->
-                                            <div class="container">
-                                                <a href="#" data-target="#pwdModal" data-toggle="modal">Forgot my password?</a>
-                                            </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-10">
+                                        <!--forgot password-->
+                                        <div class="container">
+                                            <a href="#" data-target="#pwdModal" data-toggle="modal">Forgot my password?</a>
+                                        </div>
+                                        <!--modal-->
+                                        <div id="pwdModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                        <h1 class="text-center">Forgot Password?</h1>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="col-md-12">
+                                                            <div class="panel panel-default">
+                                                                <div class="panel-body">
+                                                                    <div class="text-center">
 
-                                            <!--modal-->
-                                            <div id="pwdModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                                            <h1 class="text-center">Forgot Password?</h1>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <div class="col-md-12">
-                                                                <div class="panel panel-default">
-                                                                    <div class="panel-body">
-                                                                        <div class="text-center">
-
-                                                                            <p>If you have forgotten your password you can reset it here.</p>
-                                                                            <div class="panel-body">
-                                                                                <fieldset>
-                                                                                    @using (Html.BeginForm("ForgotPass", "Login", FormMethod.Post))
-                                                                                    {
-                                                                                        <div class="form-group">
-                                                                                            @Html.TextBoxFor(s => s.Email, htmlAttributes: new { placeholder = "E-mail Address", @class = "form-control input-lg" })
-                                                                                        </div>
-                                                                                        <input class="btn btn-lg btn-primary btn-block" value="Send My Password" type="submit">
-                                                                                    }
-                                                                                </fieldset>
-                                                                            </div>
+                                                                        <p>If you have forgotten your password you can reset it here.</p>
+                                                                        <div class="panel-body">
+                                                                            <fieldset>
+                                                                                @using (Html.BeginForm("ForgotPass", "Login", FormMethod.Post))
+                                                                                {
+                                                                                    <div class="form-group">
+                                                                                        <input class="form-control" placeholder="Email" type="email">
+                                                                                    </div>
+                                                                                    <input class="btn btn-lg btn-primary btn-block" value="Send My Password" type="submit">
+                                                                                }
+                                                                            </fieldset>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="modal-footer">
-                                                            <div class="col-md-12">
-                                                                <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
-                                                            </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <div class="col-md-12">
+                                                            <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <!--end forgot password-->
-                                            <button type="submit" class="btn btn-light btn-radius btn-brd grd1">
-                                                Submit
-                                            </button>
-
                                         </div>
-                                    </div>
-                                </form>
+                                        <!--end forgot password-->
+                                        <button type="submit" class="btn btn-light btn-radius btn-brd grd1">
+                                            Submit
+                                        </button>
 
-                            }
+                                    </div>
+                                </div>
+                            </form>
+                            @*}*@
                         </div>
                         <div class="tab-pane" id="Registration">
                             @using (Html.BeginForm("Register", "Login", FormMethod.Post))
@@ -158,27 +157,27 @@
                                 <form role="form" class="form-horizontal">
                                     <div class="form-group">
                                         <div class="col-sm-12">
-                                            <input class="form-control" placeholder="Name" type="text">
+                                            <input class="form-control" placeholder="Name" name="name" type="text">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="col-sm-12">
-                                            <input class="form-control" id="email" placeholder="Email" type="email">
+                                            <input class="form-control" id="email" placeholder="Email" name="email" type="email">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="col-sm-12">
-                                            <input class="form-control" id="mobile" placeholder="Mobile" type="email">
+                                            <input class="form-control" id="mobile" placeholder="Mobile" name="mobile" type="number">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="col-sm-12">
-                                            <input class="form-control" id="password" placeholder="Password" type="password">
+                                            <input class="form-control" id="password" placeholder="Password" name="pass" type="password">
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-10">
-                                            <button type="button" class="btn btn-light btn-radius btn-brd grd1">
+                                            <button type="submit" class="btn btn-light btn-radius btn-brd grd1">
                                                 Save &amp; Continue
                                             </button>
                                             <button type="button" class="btn btn-light btn-radius btn-brd grd1">
@@ -221,16 +220,30 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbars-host">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item"><a class="nav-link" href="../Home/Index">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="../Home/About">About Us</a></li>
-                        <li class="nav-item"><a class="nav-link" href="../Course/Course">Course</a></li>
-                        <li class="nav-item"><a class="nav-link" href="../Home/Contact">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link" href="@Url.Action("Index","Home")">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="@Url.Action("About","Home")">About Us</a></li>
+                        <li class="nav-item"><a class="nav-link" href="@Url.Action("Course","Course")">Course</a></li>
+                        <li class="nav-item"><a class="nav-link" href="@Url.Action("Contact","Home")">Contact</a></li>
                         <li class="nav-item"><a class="nav-link" href="@Url.Action("Course","Quizz")">Test</a></li>
-                        <li class="nav-item"><a class="nav-link" href="../Home/Login">Login</a></li>
-                        <li class="nav-item"><a class="nav-link" href="../Home/Register">Register</a></li>
+                        @*<li class="nav-item"><a class="nav-link" href="../Home/Login">Login</a></li>
+                            <li class="nav-item"><a class="nav-link" href="../Home/Register">Register</a></li>*@
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a class="hover-btn-new log" href="#" data-toggle="modal" data-target="#login"><span>Book Now</span></a></li>
+                        <li>
+
+                            @if (!string.IsNullOrEmpty(Session["account"]?.ToString()))
+                            {
+                                <a class="hover-btn-new log" href="@Url.Action("LogOut","Login")" >
+                                    <span>Logout</span>
+                                </a>
+                            }
+                            else
+                            {
+                                <a class="hover-btn-new log" href="#" data-toggle="modal" data-target="#login">
+                                    <span>Login Now</span>
+                                </a>
+                            }
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -248,94 +261,94 @@
         @RenderBody()
         <!-- content of each page nested in heare -->
     </div>
-        <div class="parallax section dbcolor">
-            <div class="container">
-                <div class="row logos">
-                    <div class="col-md-2 col-sm-2 col-xs-6 wow fadeInUp">
-                        <a href="#"><img src="~/Assets/images/logo_01.png" alt="" class="img-repsonsive"></a>
-                    </div>
-                    <div class="col-md-2 col-sm-2 col-xs-6 wow fadeInUp">
-                        <a href="#"><img src="~/Assets/images/logo_02.png" alt="" class="img-repsonsive"></a>
-                    </div>
-                    <div class="col-md-2 col-sm-2 col-xs-6 wow fadeInUp">
-                        <a href="#"><img src="~/Assets/images/logo_03.png" alt="" class="img-repsonsive"></a>
-                    </div>
-                    <div class="col-md-2 col-sm-2 col-xs-6 wow fadeInUp">
-                        <a href="#"><img src="~/Assets/images/logo_04.png" alt="" class="img-repsonsive"></a>
-                    </div>
-                    <div class="col-md-2 col-sm-2 col-xs-6 wow fadeInUp">
-                        <a href="#"><img src="~/Assets/images/logo_05.png" alt="" class="img-repsonsive"></a>
-                    </div>
-                    <div class="col-md-2 col-sm-2 col-xs-6 wow fadeInUp">
-                        <a href="#"><img src="~/Assets/images/logo_06.png" alt="" class="img-repsonsive"></a>
-                    </div>
-                </div><!-- end row -->
-            </div><!-- end container -->
-        </div><!-- end section -->
-
-        <footer class="footer">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-4 col-md-4 col-xs-12">
-                        <div class="widget clearfix">
-                            <div class="widget-title">
-                                <h3>About US</h3>
-                            </div>
-                            <p> This website is made by Ly Quang Tung, Nguyen Thanh Huy and Nguyen Trong Duy An</p>
-                            <div class="footer-right">
-                                <ul class="footer-links-soi">
-                                    <li><a href="https://www.facebook.com/groups/611576809715810"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="https://github.com/vikto132/SE1414-C--Webform-Team3"><i class="fa fa-github"></i></a></li>
-                                    <li><a href="https://twitter.com/?lang=vi"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="https://dribbble.com/"><i class="fa fa-dribbble"></i></a></li>
-                                    <li><a href="https://www.pinterest.com/"><i class="fa fa-pinterest"></i></a></li>
-                                </ul><!-- end links -->
-                            </div>
-                        </div><!-- end clearfix -->
-                    </div><!-- end col -->
-
-                    <div class="col-lg-4 col-md-4 col-xs-12">
-                        <div class="widget clearfix">
-                            <div class="widget-title">
-                                <h3>Information Link</h3>
-                            </div>
-                            <ul class="footer-links">
-                               <li><a href="@Url.Action("Index","Home")">Home</a></li>
-                                <li><a href="../Home/About">About</a></li>
-                                <li><a href="../Home/Contact">Contact</a></li>
-                                 <li><a href="@Url.Action("Course","Quizz")">Test</a></li>
-                            </ul><!-- end links -->
-                        </div><!-- end clearfix -->
-                    </div><!-- end col -->
-
-                    <div class="col-lg-4 col-md-4 col-xs-12">
-                        <div class="widget clearfix">
-                            <div class="widget-title">
-                                <h3>Contact Details</h3>
-                            </div>
-
-                            <ul class="footer-links">
-                                <li><a href="mailto:#">info@yoursite.com</a></li>
-                                <li><a href="#">www.yoursite.com</a></li>
-                                <li>PO Box 16122 Collins Street West Victoria 8007 Australia</li>
-                                <li>+61 3 8376 6284</li>
-                            </ul><!-- end links -->
-                        </div><!-- end clearfix -->
-                    </div><!-- end col -->
-
-                </div><!-- end row -->
-            </div><!-- end container -->
-        </footer><!-- end footer -->
-
-        <div class="copyrights">
-            <div class="container">
-                <div class="footer-distributed">
-                    <div class="footer-center">
-                        <p class="footer-company-name">All Rights Reserved. &copy; 2018 <a href="#">SmartEDU</a> Design By : <a href="https://html.design/">html design</a></p>
-                    </div>
+    <div class="parallax section dbcolor">
+        <div class="container">
+            <div class="row logos">
+                <div class="col-md-2 col-sm-2 col-xs-6 wow fadeInUp">
+                    <a href="#"><img src="~/Assets/images/logo_01.png" alt="" class="img-repsonsive"></a>
                 </div>
-            </div><!-- end container -->
-        </div><!-- end copyrights -->
+                <div class="col-md-2 col-sm-2 col-xs-6 wow fadeInUp">
+                    <a href="#"><img src="~/Assets/images/logo_02.png" alt="" class="img-repsonsive"></a>
+                </div>
+                <div class="col-md-2 col-sm-2 col-xs-6 wow fadeInUp">
+                    <a href="#"><img src="~/Assets/images/logo_03.png" alt="" class="img-repsonsive"></a>
+                </div>
+                <div class="col-md-2 col-sm-2 col-xs-6 wow fadeInUp">
+                    <a href="#"><img src="~/Assets/images/logo_04.png" alt="" class="img-repsonsive"></a>
+                </div>
+                <div class="col-md-2 col-sm-2 col-xs-6 wow fadeInUp">
+                    <a href="#"><img src="~/Assets/images/logo_05.png" alt="" class="img-repsonsive"></a>
+                </div>
+                <div class="col-md-2 col-sm-2 col-xs-6 wow fadeInUp">
+                    <a href="#"><img src="~/Assets/images/logo_06.png" alt="" class="img-repsonsive"></a>
+                </div>
+            </div><!-- end row -->
+        </div><!-- end container -->
+    </div><!-- end section -->
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-xs-12">
+                    <div class="widget clearfix">
+                        <div class="widget-title">
+                            <h3>About US</h3>
+                        </div>
+                        <p> This website is made by Ly Quang Tung, Nguyen Thanh Huy and Nguyen Trong Duy An</p>
+                        <div class="footer-right">
+                            <ul class="footer-links-soi">
+                                <li><a href="https://www.facebook.com/groups/611576809715810"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="https://github.com/vikto132/SE1414-C--Webform-Team3"><i class="fa fa-github"></i></a></li>
+                                <li><a href="https://twitter.com/?lang=vi"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="https://dribbble.com/"><i class="fa fa-dribbble"></i></a></li>
+                                <li><a href="https://www.pinterest.com/"><i class="fa fa-pinterest"></i></a></li>
+                            </ul><!-- end links -->
+                        </div>
+                    </div><!-- end clearfix -->
+                </div><!-- end col -->
+
+                <div class="col-lg-4 col-md-4 col-xs-12">
+                    <div class="widget clearfix">
+                        <div class="widget-title">
+                            <h3>Information Link</h3>
+                        </div>
+                        <ul class="footer-links">
+                            <li><a href="@Url.Action("Index","Home")">Home</a></li>
+                            <li><a href="@Url.Action("About","Home")">About</a></li>
+                            <li><a href="@Url.Action("Contact","Home")">Contact</a></li>
+                            <li><a href="@Url.Action("Course","Quizz")">Test</a></li>
+                        </ul><!-- end links -->
+                    </div><!-- end clearfix -->
+                </div><!-- end col -->
+
+                <div class="col-lg-4 col-md-4 col-xs-12">
+                    <div class="widget clearfix">
+                        <div class="widget-title">
+                            <h3>Contact Details</h3>
+                        </div>
+
+                        <ul class="footer-links">
+                            <li><a href="mailto:#">info@yoursite.com</a></li>
+                            <li><a href="#">www.yoursite.com</a></li>
+                            <li>PO Box 16122 Collins Street West Victoria 8007 Australia</li>
+                            <li>+61 3 8376 6284</li>
+                        </ul><!-- end links -->
+                    </div><!-- end clearfix -->
+                </div><!-- end col -->
+
+            </div><!-- end row -->
+        </div><!-- end container -->
+    </footer><!-- end footer -->
+
+    <div class="copyrights">
+        <div class="container">
+            <div class="footer-distributed">
+                <div class="footer-center">
+                    <p class="footer-company-name">All Rights Reserved. &copy; 2018 <a href="#">SmartEDU</a> Design By : <a href="https://html.design/">html design</a></p>
+                </div>
+            </div>
+        </div><!-- end container -->
+    </div><!-- end copyrights -->
 
     <a href="#" id="scroll-to-top" class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
     <!-- ALL JS FILES -->

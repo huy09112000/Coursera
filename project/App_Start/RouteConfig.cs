@@ -63,6 +63,12 @@ namespace project
                 defaults: new {Controller= "Quizz", Action= "OnTesting" },
                 constraints: new { quizzId = @"\d+"}
                 );
+            routes.MapRoute(
+                name:"ExamResult",
+                url: "quizz/examresult/{id}",
+                defaults: new {Controller="Quizz",Action= "AfterExam" },
+                constraints:new {id= @"\d+" }
+                );
         }
     }
 }

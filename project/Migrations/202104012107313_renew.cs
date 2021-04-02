@@ -1,13 +1,12 @@
-﻿namespace project.Migrations
+namespace project.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class databasefirst : DbMigration
+    public partial class renew : DbMigration
     {
         public override void Up()
         {
-            DropIndex("dbo.UserInfors", new[] { "ID" });
             CreateTable(
                 "dbo.Answers",
                 c => new
@@ -27,7 +26,7 @@
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Url = c.String(),
-                        Point = c.Int(),
+                        Point = c.Double(nullable: false),
                         Content = c.String(),
                         CurrentQuizzId = c.Int(nullable: false),
                     })
@@ -40,7 +39,12 @@
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(),
+                        Image = c.String(),
                         Describtion = c.String(),
+                        NumberQuestion = c.Int(),
+                        Level = c.Int(),
+                        time = c.Double(nullable: false),
                         CurrentLessionId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
@@ -72,7 +76,7 @@
                         Code = c.String(),
                         Image = c.String(),
                         Describtion = c.String(),
-                        Rate = c.Int(),
+                        Rate = c.Double(),
                         Total_rate = c.Int(),
                         CurrentCourseId = c.Int(nullable: false),
                     })
@@ -89,17 +93,32 @@
                         Describtion = c.String(),
                         Code = c.String(maxLength: 10),
                         Image = c.String(),
-                        rate = c.Int(),
+                        rate = c.Double(),
                         total_rate = c.Int(),
                     })
                 .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.UserInfors",
+                c => new
+                    {
+                        Id = c.Int(nullable: false),
+                        Name = c.String(maxLength: 50),
+                        DOB = c.DateTime(),
+                        Phone = c.Int(),
+                        Gender = c.Boolean(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Users", t => t.Id)
+                .Index(t => t.Id);
             
             CreateTable(
                 "dbo.Points",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Score = c.Int(nullable: false),
+                        Score = c.Double(nullable: false),
+                        CorrectAnswer = c.Int(nullable: false),
                         Quizz_Id = c.Int(nullable: false),
                         UserInfor_Id = c.Int(nullable: false),
                     })
@@ -108,6 +127,43 @@
                 .ForeignKey("dbo.UserInfors", t => t.UserInfor_Id, cascadeDelete: true)
                 .Index(t => t.Quizz_Id)
                 .Index(t => t.UserInfor_Id);
+            
+            CreateTable(
+                "dbo.Users",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Email = c.String(),
+                        Password = c.String(),
+                        Role = c.Int(nullable: false),
+                        Avatar = c.String(),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.Features",
+                c => new
+                    {
+                        FeatureId = c.Int(nullable: false, identity: true),
+                        Url = c.String(maxLength: 100),
+                        CurrentGroupFeatureId = c.Int(),
+                        CurrentUserId = c.Int(),
+                    })
+                .PrimaryKey(t => t.FeatureId)
+                .ForeignKey("dbo.GroupFeatures", t => t.CurrentGroupFeatureId)
+                .ForeignKey("dbo.Users", t => t.CurrentUserId)
+                .Index(t => t.CurrentGroupFeatureId)
+                .Index(t => t.CurrentUserId);
+            
+            CreateTable(
+                "dbo.GroupFeatures",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Role = c.Int(nullable: false),
+                        Feature_id = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
             
             CreateTable(
                 "dbo.COURSE_INFOR",
@@ -122,9 +178,6 @@
                 .Index(t => t.UserInforRef_ID)
                 .Index(t => t.CourseRef_ID);
             
-            AlterColumn("dbo.UserInfors", "Name", c => c.String(maxLength: 50));
-            AlterColumn("dbo.Users", "Avatar", c => c.String());
-            CreateIndex("dbo.UserInfors", "Id");
         }
         
         public override void Down()
@@ -134,12 +187,17 @@
             DropForeignKey("dbo.Quizzs", "CurrentLessionId", "dbo.Lessions");
             DropForeignKey("dbo.Lessions", "CurentSubjectId", "dbo.Subjects");
             DropForeignKey("dbo.Subjects", "CurrentCourseId", "dbo.Courses");
+            DropForeignKey("dbo.UserInfors", "Id", "dbo.Users");
+            DropForeignKey("dbo.Features", "CurrentUserId", "dbo.Users");
+            DropForeignKey("dbo.Features", "CurrentGroupFeatureId", "dbo.GroupFeatures");
             DropForeignKey("dbo.Points", "UserInfor_Id", "dbo.UserInfors");
             DropForeignKey("dbo.Points", "Quizz_Id", "dbo.Quizzs");
             DropForeignKey("dbo.COURSE_INFOR", "CourseRef_ID", "dbo.Courses");
             DropForeignKey("dbo.COURSE_INFOR", "UserInforRef_ID", "dbo.UserInfors");
             DropIndex("dbo.COURSE_INFOR", new[] { "CourseRef_ID" });
             DropIndex("dbo.COURSE_INFOR", new[] { "UserInforRef_ID" });
+            DropIndex("dbo.Features", new[] { "CurrentUserId" });
+            DropIndex("dbo.Features", new[] { "CurrentGroupFeatureId" });
             DropIndex("dbo.Points", new[] { "UserInfor_Id" });
             DropIndex("dbo.Points", new[] { "Quizz_Id" });
             DropIndex("dbo.UserInfors", new[] { "Id" });
@@ -148,17 +206,18 @@
             DropIndex("dbo.Quizzs", new[] { "CurrentLessionId" });
             DropIndex("dbo.Questions", new[] { "CurrentQuizzId" });
             DropIndex("dbo.Answers", new[] { "CurrentQuestionId" });
-            AlterColumn("dbo.Users", "Avatar", c => c.Int());
-            AlterColumn("dbo.UserInfors", "Name", c => c.String());
             DropTable("dbo.COURSE_INFOR");
+            DropTable("dbo.GroupFeatures");
+            DropTable("dbo.Features");
+            DropTable("dbo.Users");
             DropTable("dbo.Points");
+            DropTable("dbo.UserInfors");
             DropTable("dbo.Courses");
             DropTable("dbo.Subjects");
             DropTable("dbo.Lessions");
             DropTable("dbo.Quizzs");
             DropTable("dbo.Questions");
             DropTable("dbo.Answers");
-            CreateIndex("dbo.UserInfors", "ID");
         }
     }
 }

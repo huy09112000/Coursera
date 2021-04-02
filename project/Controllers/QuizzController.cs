@@ -10,9 +10,13 @@ using project.Models.DTO;
 using System.Web.Hosting;
 using project.Shared;
 using System.Dynamic;
+using project.Filter;
+using System.Net.Http;
 
 namespace project.Controllers
 {
+    [NitishAuthentication]
+    [FilterAuthorize(1, 2)]
     public class QuizzController : Controller
     {
         // GET: Quizz
@@ -121,8 +125,73 @@ namespace project.Controllers
         [ActionName("result")]
         public ActionResult AfterSubmit(List<AnswerOnSubmitDTO> data, int id)
         {
+            int userId = Convert.ToInt32(Session["id"]);
+            int correctAns = 0;
+            double pointTotal = 0;
+            data = data != null ? data : new List<AnswerOnSubmitDTO>();
+            PointAfterSubmitDTO pointAfter;
+            using (EducationDBContext db = new EducationDBContext())
+            {
+                foreach (AnswerOnSubmitDTO item in data)
+                {
+                    var ans = (from an in db.Answers where an.Id == item.Ans && an.IsCorrect select an).FirstOrDefault();
+                    double? point = (from q in db.Questions where q.Id == item.Ques select q).FirstOrDefault().Point;
+                    pointTotal += ans != null ? point.HasValue?point.Value:0 : 0;
+                    correctAns += ans != null ? 1 : 0;
+                }
+                UserInfor user = (from u in db.UserInfors where u.Id == userId select u).FirstOrDefault();
+                Quizz quizz = (from q in db.Quizzs where q.Id == id select q).FirstOrDefault();
+                 pointAfter = new PointAfterSubmitDTO()
+                {
+                    Quizz = quizz,
+                    Score = pointTotal,
+                    UserInfor = user,
+                    CorrectAnswer = correctAns
+                };
+                Point score = (from p in db.points where p.UserInfor.Id == userId && p.Quizz.Id == id select p).FirstOrDefault();
+                if(score != null)
+                {
+                    score.CorrectAnswer = pointAfter.CorrectAnswer;
+                    score.Quizz = pointAfter.Quizz;
+                    score.Score = pointAfter.Score;
+                    score.UserInfor = pointAfter.UserInfor;
+                }
+                else
+                {
+                    db.points.Add(AutoMap.Mapper.Map<Point>(pointAfter));
+                }
+                db.SaveChanges();
+            }
+            return Json(new
+            {
+               correct = correctAns,
+               point = pointTotal,
+               id = id
+            },
+            JsonRequestBehavior.AllowGet);
+        }
+        [ActionName("examresult")]
+        public ActionResult AfterExam(int id)
+        {
+            int userId = Convert.ToInt32(Session["id"]);
+            using (EducationDBContext db = new EducationDBContext())
+            {
+                var quizzDTO = AutoMap.Mapper.Map<QuizzDTO>((from q in db.Quizzs where q.Id == id select q).FirstOrDefault());
+                var point = AutoMap.Mapper.Map<PointAfterSubmitDTO>((from p in db.points where p.UserInfor.Id == userId && p.Quizz.Id == id select p).FirstOrDefault());
+                QuizzResultDTO quizzResultDTO = new QuizzResultDTO()
+                {
+                    CorrectAnswer = point.CorrectAnswer,
+                    Image = string.IsNullOrEmpty(quizzDTO.Image) ? "~/Assets/images/quizz/quizz_default.png" : quizzDTO.Image,
+                    Id = quizzDTO.Id,
+                    Level = quizzDTO.Level.HasValue ? quizzDTO.Level.Value : 0,
+                    Name = quizzDTO.Name,
+                    Score = point.Score,
+                    time = quizzDTO.time
+                };
 
-            return View();
+                return View("AfterSubmit", quizzResultDTO);
+
+            }
         }
         [HttpGet]
         public ActionResult ListSubject(string id, int pageNum)

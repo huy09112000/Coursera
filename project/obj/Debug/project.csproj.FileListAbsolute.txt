@@ -187,16 +187,10 @@ D:\homework\major\c#_On_Class\project\SE1414-C--Webform-Team3\project\bin\Newton
 D:\homework\major\c#_On_Class\project\SE1414-C--Webform-Team3\project\bin\Antlr3.Runtime.pdb
 D:\homework\major\c#_On_Class\project\SE1414-C--Webform-Team3\project\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 D:\homework\major\c#_On_Class\project\SE1414-C--Webform-Team3\project\obj\Debug\project.csprojAssemblyReference.cache
-D:\homework\major\c#_On_Class\project\SE1414-C--Webform-Team3\project\obj\Debug\project.Migrations.test.resources
-D:\homework\major\c#_On_Class\project\SE1414-C--Webform-Team3\project\obj\Debug\project.Migrations.test1.resources
-D:\homework\major\c#_On_Class\project\SE1414-C--Webform-Team3\project\obj\Debug\project.Migrations.test2.resources
-D:\homework\major\c#_On_Class\project\SE1414-C--Webform-Team3\project\obj\Debug\project.Migrations.databasefirst.resources
-D:\homework\major\c#_On_Class\project\SE1414-C--Webform-Team3\project\obj\Debug\project.csproj.GenerateResource.cache
 D:\homework\major\c#_On_Class\project\SE1414-C--Webform-Team3\project\obj\Debug\project.csproj.CoreCompileInputs.cache
 D:\homework\major\c#_On_Class\project\SE1414-C--Webform-Team3\project\obj\Debug\project.csproj.CopyComplete
 D:\homework\major\c#_On_Class\project\SE1414-C--Webform-Team3\project\obj\Debug\project.dll
 D:\homework\major\c#_On_Class\project\SE1414-C--Webform-Team3\project\obj\Debug\project.pdb
-D:\homework\major\c#_On_Class\project\SE1414-C--Webform-Team3\project\obj\Debug\project.Migrations.addnewtable.resources
 C:\Users\ADMIN\Source\Repos\SE1414-C--Webform-Team3\project\bin\project.dll.config
 C:\Users\ADMIN\Source\Repos\SE1414-C--Webform-Team3\project\bin\project.dll
 C:\Users\ADMIN\Source\Repos\SE1414-C--Webform-Team3\project\bin\project.pdb
@@ -286,4 +280,5 @@ C:\Users\ADMIN\Source\Repos\SE1414-C--Webform-Team3\project\obj\Debug\project.cs
 C:\Users\ADMIN\Source\Repos\SE1414-C--Webform-Team3\project\obj\Debug\project.csproj.CopyComplete
 C:\Users\ADMIN\Source\Repos\SE1414-C--Webform-Team3\project\obj\Debug\project.dll
 C:\Users\ADMIN\Source\Repos\SE1414-C--Webform-Team3\project\obj\Debug\project.pdb
-D:\homework\major\c#_On_Class\project\SE1414-C--Webform-Team3\project\obj\Debug\project.Migrations.addpropertygroupfeature.resources
+D:\homework\major\c#_On_Class\project\SE1414-C--Webform-Team3\project\obj\Debug\project.Migrations.renew.resources
+D:\homework\major\c#_On_Class\project\SE1414-C--Webform-Team3\project\obj\Debug\project.csproj.GenerateResource.cache

@@ -1,0 +1,55 @@
+﻿@model project.Models.DTO.QuizzResultDTO
+@{
+    ViewBag.Title = "AfterSubmit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Styles.Render("~/Assets/admin/quizz/css/style.css")
+
+@Styles.Render("~/Assets/admin/quizz/css/lesson.css")
+@Styles.Render("~/Assets/admin/quizz/css/result.css")
+
+
+<div class="list_background">
+    <div class="title__page" onclick="window.location.href = '@Url.Content("~/Quizz/Course")'">
+        <div class="title__arrow right"></div>
+        <h2>Exam</h2>
+    </div>
+    <div class="list__container" id="lstQuizz">
+        <div class="item__quizz">
+            <div class="quizz__image">
+                <img src="@Url.Content("~/Assets/images/quizz/quizz_default.png")" />
+            </div>
+            <div class="quizz__infor">
+                <div class="quizz__header">
+                    <div class="quizz__name">
+                        <h1>@Model.Name</h1>
+                    </div>
+                    <div class="quizz_num_ques">
+                        <span>Time: @Model.time h</span>
+                    </div>
+                </div>
+                <div class="quizz__des">
+                    <span> Correct Answer: @Model.CorrectAnswer</span>
+                    <span>Score: @Model.Score</span>
+                </div>
+                <div class="quizz__time"><span><i class="fas fa-clock"></i></span> @Model.time h</div>
+                <div class="quizz__level" title="Level @Model.Level">
+                    <span class="circle"></span>
+                    <span class="circle"></span>
+                    <span class="circle"></span>
+                    <span class="circle"></span>
+                    <span class="circle"></span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
+
+@Scripts.Render("~/Assets/admin/quizz/js/util.js")
+
+
+

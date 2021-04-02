@@ -98,12 +98,9 @@ function startExam(id, time) {
             startTimer(timeLeft, TIME_LIMIT);
         })
         .fail(function (jqxhr, setting, ex) { console.log(ex) });
-
-
 }
 
 function initTesting(res) {
-    console.log(1, res);
 
     $('.main-carousel').empty();
 
@@ -159,10 +156,8 @@ function submitExam(quizzId) {
             result.push({ ans: lstId[1], ques: lstId[2] });
         }
     });
-    console.log(result);
-    HTTPPost('/quizz/result', { data: result, id: quizzId }, function (res) {
-        
-    })
+
+    HTTPPost('/quizz/result', { data: result, id: quizzId }).done(window.location.href = "/quizz/examresult/" +quizzId);
 }
 
 function onTimesUp() {

@@ -19,9 +19,9 @@
           
             var User = new List<User>
             {
-                new User{ Email="Admin",Password="1",Role=1},
-                new User{ Email="Student",Password="1",Role=2},
-                new User{ Email="Teacher",Password="1",Role=3},
+                new User{ Email="admin@gmail.com",Password="1",Role=1},
+                new User{ Email="student@gmail.com",Password="1",Role=2},
+                new User{ Email="teacher@gmail.com",Password="1",Role=3},
 
             };
             User.ForEach(s => context.Users.AddOrUpdate(p => p.Email, s));

@@ -9,5 +9,7 @@ namespace project.Models.DTO
     {
         public int Ans { get; set; }
         public int Ques { get; set; }
+
+
     }
 }

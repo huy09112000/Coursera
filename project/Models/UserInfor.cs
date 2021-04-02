@@ -15,8 +15,7 @@ namespace project.Models
             this.Courses = new HashSet<Course>();
         }
 
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [ForeignKey("User")]
         public int Id { get; set; }
         [MaxLength(50)]
         public string Name { get; set; }

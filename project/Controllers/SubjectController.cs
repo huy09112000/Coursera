@@ -5,9 +5,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using project.Models;
+using project.Filter;
 
 namespace project.Controllers
 {
+    [NitishAuthentication]
     public class SubjectController : Controller
     {
         private EducationDBContext db = new EducationDBContext();

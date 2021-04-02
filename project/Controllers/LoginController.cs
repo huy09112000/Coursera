@@ -7,6 +7,9 @@ using System.Web;
 using project.DAL;
 using System.Web.Mvc;
 using System.Net.Mail;
+using project.Shared;
+using project.Models.DTO;
+using System.Web.Security;
 
 namespace project.Views.Home
 {
@@ -21,44 +24,29 @@ namespace project.Views.Home
         }
 
         [HttpPost]
-        public ActionResult Verify(User acc)
+        public ActionResult Verify(string email, string pass)
         {
             if (ModelState.IsValid)
             {
-                DataTable dataTable = new DataTable();
 
-                dataTable = new DataProvider().executeQuery("SELECT [Url] FROM Users as us left join Group_Feature as gf on us.Role = gf.Role left join Feature as f on gf.Feature_id = f.Feature_id where us.Email = '" + acc.Email + "' and us.Password = '" + acc.Password + "'");
-                if (dataTable != null && dataTable.Rows.Count > 0)
+                using (EducationDBContext db = new EducationDBContext())
                 {
-                    //exist thi load them list<authorization> cho object roi sau do tạo session để lơi data
-                    User accessAccount = new User();
-                    accessAccount.Email = acc.Email;
-                    accessAccount.Password = acc.Password;
+                    var user = (from u in db.Users where u.Email.Equals(email) && u.Password.Equals(pass) select u).FirstOrDefault();
 
-                    accessAccount.features = new List<Feature>();
-                    //add authorize for object
-                    foreach (DataRow row in dataTable.Rows)
+                    if(user != null)
                     {
-                        foreach (var item in row.ItemArray)
-                        {
-                            Feature f = new Feature();
-                            f.Url = item.ToString();
-                            //loi o day
-                            accessAccount.features.Add(f);
-                        }
+                        FormsAuthentication.SetAuthCookie(email, false);
+                        UserDTO userDTO = AutoMap.Mapper.Map<UserDTO>(user);
+                        Session["account"] = userDTO.Email;
+                        Session["id"] = userDTO.Id;
+                        return RedirectToAction("Index", "Home");
                     }
-
-                    //create session
-                    Session["account"] = accessAccount;
-                    //first para is action name, second is controller name
-                    return RedirectToAction("About", "Home");
+                    else
+                    {
+                        //k ton tai
+                        return View("Error");
+                    }
                 }
-                else
-                {
-                    //k ton tai
-                    return View("Error");
-                }
-
             }
             else
             {
@@ -150,12 +138,35 @@ namespace project.Views.Home
         }
 
         [HttpPost]
-        public ActionResult Register(User user)
+        public ActionResult Register(string name, string email, int mobile, string pass)
         {
             //moi lan tao moi la phai tao moi ca 2 bang
-            new DataProvider().executeNonQuery("INSERT INTO [dbo].[Users]  ([Email] ,[Password] ,[Role],[Avatar])VALUES('" + user.Email + "','" + user.Password + "','3','')");
-            return View("Contact");
-            //dang gap vấn đề ở chỗ declare mutiple model cho layout.html page
+            using (EducationDBContext db = new EducationDBContext())
+            {
+                User principal = new User()
+                {
+                    Email = email,
+                    Password = pass,
+                    Role = 2,
+                };
+
+               UserInfor ui= new UserInfor()
+                {
+                    Name = name,
+                    Phone = mobile
+                };
+               ui.Id= db.Users.Add(principal).Id;
+                db.UserInfors.Add(ui);
+                db.SaveChanges();
+                return View("Contact");
+            }
+
+        }
+        public ActionResult LogOut()
+        {
+            FormsAuthentication.SignOut();
+            Session["account"] = string.Empty;
+            return RedirectToAction("Index", "Home");
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿@model IEnumerable<project.Models.DTO.CourseDTO>
 @using PagedList.Mvc
 @using PagedList
+@using project.Models.DTO
 @{
     ViewBag.Title = "Course";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -13,7 +14,7 @@
         <h2>Course</h2>
     </div>
     <div class="list__container">
-        @foreach (var item in Model)
+        @foreach (CourseDTO item in Model)
         {
             <div class="list__item up" onclick="hideOnClick(this, '@Html.DisplayFor(modelitem => item.Id)')" id="@Html.DisplayFor(modelitem => item.Id)c">
                 <div class="item__header">
@@ -38,30 +39,7 @@
 
     </div>
     <div class="list__subject" id="lstsubject">
-        @*<div class="item__subject pos-1">
-            <div class="subject__header"><h1>Math</h1></div>
-            <div class="subject__content">
-                <p>
-                    bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
-                </p>
-            </div>
-        </div>
-        <div class="item__subject pos-2">
-            <div class="subject__header">Math</div>
-        </div>
-        <div class="item__subject pos-3">
-            <div class="subject__header">Math</div>
-        </div>
-        <div class="item__subject pos-4">
-            <div class="subject__header">Math</div>
-        </div>
-        <div class="item__subject pos-5">
-            <div class="subject__header">Math</div>
-        </div>
-        <div class="item__subject pos-6">
-            <div class="subject__header">Math</div>
-        </div>*@
-        
+    
     </div>
 
     @Html.PagedListPager(pagedList, page => Url.Action("Course",
