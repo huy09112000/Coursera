@@ -1,12 +1,6 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\project",
-    "\\project\\Controllers",
-    "\\project\\Views",
-    "\\project\\Views\\Home",
-    "\\project\\Views\\Shared"
+    ""
   ],
-  "SelectedNode": "\\project\\Controllers\\AccountController.cs",
   "PreviewInSolutionExplorer": false
 }

@@ -23,6 +23,17 @@ namespace project.Views.Home
             return View();
         }
 
+        public ActionResult ForgotPassword()
+        {
+            return View();
+        }
+
+        public ActionResult Register()
+        {
+            return View();
+        }
+
+
         [HttpPost]
         public ActionResult Verify(string email, string pass)
         {
@@ -66,7 +77,7 @@ namespace project.Views.Home
             }
             return new string(result);
         }
-        private void sendEmail(string mailTo, string emailBody)
+        private string sendEmail(string mailTo, string emailBody)
         {
             try
             {
@@ -97,10 +108,11 @@ namespace project.Views.Home
                 //to access https link
                 smtpClient.EnableSsl = true;
                 smtpClient.Send(mailMessage);
+                return "Success!!";
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+               return e.Message;
             }
         }
 
@@ -120,20 +132,30 @@ namespace project.Views.Home
                     string newPassWord = passwordRender();
                     new DataProvider().executeQuery("UPDATE [dbo].[Users] SET [Password] = '" + newPassWord + "' WHERE [Email] = '" + user.Email + "'");
                     //gui mail
-                    sendEmail(user.Email, newPassWord);
+
+                    string sendMailResult = sendEmail(user.Email, newPassWord);
+                    if (sendMailResult != "Success!!")
+                    {
+                        ViewBag.MyMessage = sendMailResult;
+                        return View("Error");
+                    }
 
                     //return ve home page
-                    return View("Contact");
+                    return View("Login");
                 }
                 else
                 {
                     //return loi
+                    ViewBag.MyMessage = "Account doesn't exist";
                     return View("Error");
+
                 }
             }
             else
             {
+                ViewBag.MyMessage = "Validation data error";
                 return View("Error");
+
             }
         }
 

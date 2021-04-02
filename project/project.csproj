@@ -419,9 +419,9 @@
     <Content Include="Views\Lesson\Lesson.cshtml" />
     <Content Include="Views\Lesson\Content.cshtml" />
     <Content Include="Views\Login\Contact.cshtml" />
-    <Content Include="Views\Home\Login.cshtml" />
-    <Content Include="Views\Home\Register.cshtml" />
-    <Content Include="Views\Home\ForgotPassword.cshtml" />
+    <Content Include="Views\Login\Login.cshtml" />
+    <Content Include="Views\Login\Register.cshtml" />
+    <Content Include="Views\Login\ForgotPassword.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Quizz\AfterSubmit.cshtml" />
   </ItemGroup>
