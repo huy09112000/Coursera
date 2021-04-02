@@ -206,18 +206,19 @@
     <!-- END LOADER -->
     <!-- Start header -->
     <header class="top-navbar">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="header__bar navbar navbar-expand-lg navbar-light">
             <div class="container-fluid">
                 @*@Html.ActionLink("<img src=\"~/ Assets / images / logo.png\" />","Index","Home",null,new {@class = "navbar-brand" })*@
                 <a class="navbar-brand" href="@Url.Action("Index","Home")">
 
                     <img src="~/Assets/images/logo.png" alt="" />
                 </a>
-                <div style="margin-left:20px">
-                    <input type="text" style="width:300px"/>
-                    <button style="height:31px;background-color: #eead0c">
+                <div class="search-bar">
+                    <input type="text" style="width:300px" placeholder="search lesson here"/>
+                    <span><i class="fas fa-search"></i></span>
+                    @*<button style="height:31px;background-color: #eead0c">
                         <p style="font-weight:700;color:white">Search</p>
-                    </button>
+                    </button>*@
                 </div>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars-host" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="icon-bar"></span>

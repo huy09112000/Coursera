@@ -1,0 +1,73 @@
+﻿.cl_box {
+    display: flex;
+    padding: 150px 50px 50px 50px;
+    flex-direction: row-reverse;
+    background: radial-gradient(#aed1e3 15%, transparent 16%) 0 0,radial-gradient(#aed1e3 15%, transparent 16%) 8px 8px,radial-gradient(rgb(255 255 255 / 42%) 15%, transparent 20%) 0 1px,radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 12px;
+    background-color: #aed1e3;
+    background-size: 16px 16px;
+    position: relative;
+}
+.cl_content {
+    margin-left: 50px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 450px;
+    width: 50%;
+    padding: 5px;
+    border-radius: 20px 10px 10px 20px;
+    box-shadow: 0 0 6px 0 #0000007a;
+}
+  
+/* width */
+    .cl_content::-webkit-scrollbar {
+        width: 20px;
+    }
+
+/* Track */
+    .cl_content::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px grey;
+        border-radius: 10px;
+    }
+
+/* Handle */
+    .cl_content::-webkit-scrollbar-thumb {
+        background: #00007ec7;
+        border-radius: 20px;
+    }
+
+    /* Handle on hover */
+        .cl_content  ::-webkit-scrollbar-thumb:hover {
+            background: #b30000;
+        }
+    .cl_content p {
+        padding: 5px 5px 10px 5px;
+        font-size: 20px;
+    }
+.cl_video {
+    width: 70%;
+    height: 450px;
+    /* margin: 0 auto; */
+}
+    .cl_video iframe {
+        border-radius: 20px;
+        box-shadow: 0 0 6px 0 black;
+        width: 100%;
+        height: 100%;
+    }
+.cl_content h2 {
+    font-family: 'futura-bold';
+    font-size: 30px;
+}
+.title__page {
+    width: 200px;
+    height: 100px;
+    background: #00004d;
+    position: absolute;
+    text-align: center;
+    top: 30px;
+    left: 0;
+    padding: 30px 0;
+    transition: width 0.5s ease-in-out;
+    cursor: pointer;
+    animation: 1s ease 0s 1 slideInFromLeft;
+}

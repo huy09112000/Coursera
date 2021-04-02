@@ -4,13 +4,22 @@
     ViewBag.Title = "Content";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div style="display: flex;margin-left: 50px;margin-right: 50px">
+@Styles.Render("~/Assets/admin/quizz/css/style.css")
+
+@Styles.Render("~/Assets/admin/quizz/css/cl.css")
+<div class="cl_box">
+    <div class="title__page" onclick="window.location.href = '@Url.Content("~/Quizz/Course")'">
+        <div class="title__arrow right"></div>
+        <h2>Lesson</h2>
+    </div>
     @foreach (var item in ViewBag.contents)
     {
-        <div style="margin-right: 50px">
+        <div class="cl_content">
             <h2>@item.Name</h2>
-            @item.Content
+            <p>
+                @item.Content
+            </p>
         </div>
-        <div><iframe width="560" height="315" src=@item.Url title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+        <div class="cl_video"><iframe width="560" height="315" src=@item.Url title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
     }
 </div>

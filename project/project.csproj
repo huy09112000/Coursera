@@ -243,6 +243,8 @@
     <Content Include="Assets\admin\dist\js\mapsed.js" />
     <Content Include="Assets\admin\dist\js\modernizer.js" />
     <Content Include="Assets\admin\dist\js\timeline.min.js" />
+    <Content Include="Assets\admin\home\css\home.css" />
+    <Content Include="Assets\admin\quizz\css\cl.css" />
     <Content Include="Assets\admin\quizz\css\Exam.css" />
     <Content Include="Assets\admin\quizz\css\lesson.css" />
     <Content Include="Assets\admin\quizz\css\result.css" />
@@ -251,6 +253,7 @@
     <Content Include="Assets\admin\quizz\js\Exam.js" />
     <Content Include="Assets\admin\quizz\js\REST.js" />
     <Content Include="Assets\admin\quizz\js\util.js" />
+    <Content Include="Assets\css\header.css" />
     <Content Include="Assets\images\about_02.jpg" />
     <Content Include="Assets\images\about_03.jpg" />
     <Content Include="Assets\images\ajax-loader.gif" />

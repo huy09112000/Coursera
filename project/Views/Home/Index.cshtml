@@ -3,167 +3,51 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<!-- Modal -->
 
-<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header tit-up">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">Customer Login</h4>
-            </div>
-            <div class="modal-body customer-box">
-                <!-- Nav tabs -->
-                <ul class="nav nav-tabs">
-                    <li><a class="active" href="#Login" data-toggle="tab">Login</a></li>
-                    <li><a href="#Registration" data-toggle="tab">Registration</a></li>
-                </ul>
-                <!-- Tab panes -->
-                <div class="tab-content">
-                    <div class="tab-pane active" id="Login">
-                        @using (Html.BeginForm("Verify", "Login", FormMethod.Post))
-                        {
-                            <form role="form" class="form-horizontal">
-                                <div class="form-group">
-                                    <div class="col-sm-12">
-                                        @Html.TextBoxFor(Model => Model.Email, htmlAttributes: new { placeholder = "Email", @class = "form-control" })
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-12">
-                                        @Html.TextBoxFor(Model => Model.Password, htmlAttributes: new { placeholder = "Password", @class = "form-control" })
-                                        Password
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-10">
-                                        <!--forgot password-->
-                                        <div class="container">
-                                            <a href="#" data-target="#pwdModal" data-toggle="modal">Forgot my password?</a>
-                                        </div>
+@Styles.Render("~/Assets/admin/quizz/css/style.css")
 
-                                        <!--modal-->
-                                        <div id="pwdModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                                        <h1 class="text-center">Forgot Password?</h1>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <div class="col-md-12">
-                                                            <div class="panel panel-default">
-                                                                <div class="panel-body">
-                                                                    <div class="text-center">
+@Styles.Render("~/Assets/admin/home/css/home.css")
 
-                                                                        <p>If you have forgotten your password you can reset it here.</p>
-                                                                        <div class="panel-body">
-                                                                            <fieldset>
-                                                                                @using (Html.BeginForm("ForgotPass", "Login", FormMethod.Post))
-                                                                                {
-                                                                                    <div class="form-group">
-                                                                                        @Html.TextBoxFor(s => s.Email, htmlAttributes: new { placeholder = "E-mail Address", @class = "form-control input-lg" })
-                                                                                    </div>
-                                                                                    <input class="btn btn-lg btn-primary btn-block" value="Send My Password" type="submit">
-                                                                                }
-                                                                            </fieldset>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <div class="col-md-12">
-                                                            <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!--end forgot password-->
-                                        <button type="submit" class="btn btn-light btn-radius btn-brd grd1">
-                                            Submit
-                                        </button>
-
-                                    </div>
-                                </div>
-                            </form>
-
-                        }
-                    </div>
-                    <div class="tab-pane" id="Registration">
-                        @using (Html.BeginForm("Register", "Login", FormMethod.Post))
-                        {
-                            <form role="form" class="form-horizontal">
-                                <div class="form-group">
-                                    <div class="col-sm-12">
-                                        <input class="form-control" placeholder="Name" type="text">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-12">
-                                        <input class="form-control" id="email" placeholder="Email" type="email">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-12">
-                                        <input class="form-control" id="mobile" placeholder="Mobile" type="email">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-12">
-                                        <input class="form-control" id="password" placeholder="Password" type="password">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-10">
-                                        <button type="button" class="btn btn-light btn-radius btn-brd grd1">
-                                            Save &amp; Continue
-                                        </button>
-                                        <button type="button" class="btn btn-light btn-radius btn-brd grd1">
-                                            Cancel
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
-                        }
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<section style="width:100%;height:500px;display:flex;margin-left:200px">
-    <div style="display:block">
-        <h1 style="font-size:75px;font-weight:600;width:100px;height:100px">
+<section class="header_section">
+    <div class="section_one"></div>
+    <div class="header_main">
+        <h1>
             Welcome To SmartEDU
         </h1>
-        <p style="margin-top:200px;font-size:18px;width:380px">Where you can learn and practice every subjects and earn knowledge from every field in your life.</p>
-        <button style="width:150px;height:50px;background-color: rgba(234, 171, 16, 0.98);color: white;font-weight: 400;border-radius:10px">
-            <a data-toggle="modal" data-target="#login">Join now for free </a>
+        <p>Where you can learn and practice every subjects and earn knowledge from every field in your life.</p>
+        <button class="header_btn">
+            <a data-toggle="modal" data-target="#login">Join now for free</a>
         </button>
     </div>
-    <img src="https://tecnosoluciones.com/wp-content/uploads/2019/04/Fundamentos-del-Elearning.jpg" style="border-radius:50%;margin-left:300px;width:40%;height:60%">
-</section>>
+    <div class="header_img">
+        <img src="https://tecnosoluciones.com/wp-content/uploads/2019/04/Fundamentos-del-Elearning.jpg">
+    </div>
+</section>
 
-<section style="width:100%;height:500px;display:flex">
-    <img src="https://www.potential.com/wp-content/uploads/2020/11/Online-teaching.png" style="margin-right: 200px;margin-left:10%;width:40%;height:60%">
-    <div style="display:block">
-        <h1 style="font-size:45px;font-weight:600;width:300px;height:100px">
+<section class="header_section">
+    <div class="section_two"></div>
+
+    <div class="upper_img">
+        <img src="https://www.potential.com/wp-content/uploads/2020/11/Online-teaching.png">
+    </div>
+    <div class="upper_main">
+        <h1>
             Learn from our best teachers and quality lessons
         </h1>
-        <p style="margin-top:150px;font-size:18px;width:380px">Start learning today from our quality lessons and practicing with our lecturers.</p>
+        <p>Start learning today from our quality lessons and practicing with our lecturers.</p>
     </div>
-</section>>
+</section>
 
-<section style="width:100%;height:500px;display:flex;margin-left:200px">
-    <div style="display:block">
-        <h1 style="font-size:45px;font-weight:600;width:300px;height:100px">
+<section class="header_section ">
+    <div class="section_three"></div>
+
+    <div class="lower_main">
+        <h1>
             Master skills with in-depth learning
         </h1>
-        <p style="margin-top:70px;font-size:18px;width:380px">Apply what you learn with self-paced quizzes.</p>
+        <p>Apply what you learn with self-paced quizzes.</p>
     </div>
-    <img src="https://cdn3.vectorstock.com/i/1000x1000/05/32/online-test-questionnaire-survey-form-on-pc-vector-23350532.jpg" style="margin-left:300px;height:300px">
-</section>>
+    <div class="lower_img">
+        <img src="https://cdn3.vectorstock.com/i/1000x1000/05/32/online-test-questionnaire-survey-form-on-pc-vector-23350532.jpg">
+    </div>
+</section>

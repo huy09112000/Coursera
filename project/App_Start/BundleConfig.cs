@@ -28,7 +28,7 @@ namespace project
                       "~/Content/site.css"
                      ));
             bundles.Add(new StyleBundle("~/Content/extentCss").Include("~/Content/font-awesome.css",
-                      "~/Content/font-awesome.min.css"));
+                      "~/Content/font-awesome.min.css", "~/Assets/css/header.css"));
         }
     }
 }
