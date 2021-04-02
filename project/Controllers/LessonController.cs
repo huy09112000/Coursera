@@ -33,7 +33,9 @@ namespace project.Controllers
             foreach (var contents in content)
             {
                 ViewBag.contents = content;
+                contents.View++;
             }
+            db.SaveChanges();
             ViewBag.contents = content;
             return View();
         }
