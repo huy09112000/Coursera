@@ -212,9 +212,10 @@
                     <img src="~/Assets/images/logo.png" alt="" />
                 </a>
                 <form asp-controller="Lession" asp-action="Index" method="get">
-                    <div style="margin-left:20px">
-                        <input type="text" name="search" />
-                        <input type="submit" value="Search" />
+                    <div class="search-bar">
+                        <input type="text" style="width:300px" name="search" placeholder="search lesson here" />
+                        @*<input type="submit" value="Search" />*@
+                        <span><i class="fas fa-search"></i></span>
                     </div>
                 </form>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars-host" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
