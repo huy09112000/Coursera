@@ -1,0 +1,15 @@
+﻿.quizz__infor{
+    position:relative;
+}
+.rating__star{
+    top:165px;
+}
+
+.tb__lst {
+    background: #ffffff85;
+    border-radius: 20px;
+    overflow: hidden;
+}
+.table-bordered td{
+    border-bottom:1px solid;
+}

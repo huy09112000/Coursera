@@ -4,34 +4,50 @@
     ViewBag.Title = "";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h2 style="margin: 20px;font-size:40px">Courses for you</h2>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+
+@*<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">*@
+@Styles.Render("~/Assets/admin/quizz/css/style.css")
+@Styles.Render("~/Assets/admin/quizz/css/lesson.css")
+@Styles.Render("~/Assets/admin/course/css/course.css")
 <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 <body>
-    <div style="display:flex">
-        @foreach (var item in ViewBag.courses)
-        {
-            <div style="width: 300px;height: 360px;border: 1px solid #808080;margin: 30px;box-shadow: 0px 3px 5px 3px #ccc;border-radius: 12px">
-                <div>
-                    <img src=@item.Image style="height: 180px;width: 100%;border-radius:12px" />
+    <div class="list_background">
+        <div class="title__page" onclick="window.location.href = '@Url.Content("~/Quizz/Course")'">
+            <div class="title__arrow right"></div>
+            <h2 style="font-size:24px">Courses for you</h2>
+        </div>
+        <div class="list__container" id="lstQuizz">
+            @foreach (var item in ViewBag.courses)
+            {
+                <div class="item__quizz" id="@item.Id-quizz-@ViewBag.lessonId" onclick="window.location.href='/Subject/Subject?CurrentCourseId=@item.Id'">
+                    <div class="quizz__image">
+                        <img src="@Url.Content(item.Image)" />
+                    </div>
+                    <div class="quizz__infor">
+                        <div class="quizz__header">
+                            <div class="quizz__name">
+                                <h1>@item.Name</h1>
+                            </div>
+                         
+                        </div>
+                        <div class="quizz__des">
+                            <p>
+                                @item.Describtion
+                            </p>
+                        </div>
+                        <div class="rating__star">
+                            @*<img src="@Url.Content("~/Assets/images/rating-star-active.png")"/>*@
+                            <div class="star__active" style="width:@item.rate%;"></div>
+                            <img src="@Url.Content("~/Assets/images/rating-star.png")" />
+                        </div>
+                    </div>
                 </div>
-                <div style="margin: 10px">
-                    <a href="../Subject/Subject?CurrentCourseId=@item.Id" style="font-size: 20px">@item.Name</a>
-                    <p>@item.Describtion</p>
-                </div>
-                <div style="margin: 10px">
-                    @for (int i = 0; i < @item.rate; i++)
-                    {
-                        <i class='fas fa-star' style='font-size:20px; color: #FBDA00;'></i>
-                    }
-                </div>
-                <div style="margin: 10px">
-                    <p>@item.Code</p>
-                </div>
-            </div>
-        }
+            }
+        </div>
     </div>
+
 </body>
+@Scripts.Render("~/Assets/admin/quizz/js/util.js")
 
 
 

@@ -190,6 +190,7 @@
     <Compile Include="Models\DTO\PointAfterSubmitDTO.cs" />
     <Compile Include="Models\DTO\QuizzResultDTO.cs" />
     <Compile Include="Models\DTO\UserDTO.cs" />
+    <Compile Include="Models\DTO\UserLoginDTO.cs" />
     <Compile Include="Models\Feature.cs" />
     <Compile Include="Models\GroupFeature.cs" />
     <Compile Include="Models\DTO\CourseDTO.cs" />
@@ -216,6 +217,7 @@
     <Compile Include="Shared\ConfigMap\UserProfile.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\admin\course\css\course.css" />
     <Content Include="Assets\admin\dist\css\animate.css" />
     <Content Include="Assets\admin\dist\css\animate.min.css" />
     <Content Include="Assets\admin\dist\css\bootstrap-touch-slider.css" />
@@ -244,7 +246,8 @@
     <Content Include="Assets\admin\dist\js\modernizer.js" />
     <Content Include="Assets\admin\dist\js\timeline.min.js" />
     <Content Include="Assets\admin\home\css\home.css" />
-    <Content Include="Assets\admin\quizz\css\cl.css" />
+    <Content Include="Assets\admin\home\js\submitForm.js" />
+    <Content Include="Assets\admin\course\css\cl.css" />
     <Content Include="Assets\admin\quizz\css\Exam.css" />
     <Content Include="Assets\admin\quizz\css\lesson.css" />
     <Content Include="Assets\admin\quizz\css\result.css" />

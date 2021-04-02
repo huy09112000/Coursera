@@ -39,9 +39,13 @@ namespace project.Controllers
         {
             //if (checkAuthentication())
             //{
-                var course = (from s in db.Courses select s).ToList();
-                ViewBag.courses = course;
-                return View();
+            var course = (from s in db.Courses select s).ToList();
+            foreach (Course item in course)
+            {
+                item.rate = item.rate.HasValue? (((float)item.rate / 5.0) * 100) : 0;
+            }
+            ViewBag.courses = course;
+            return View();
             //}
             //else
             //{

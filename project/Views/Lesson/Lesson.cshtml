@@ -4,22 +4,30 @@
     ViewBag.Title = "Lesson";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@Styles.Render("~/Assets/admin/quizz/css/style.css")
+@Styles.Render("~/Assets/admin/quizz/css/lesson.css")
+@Styles.Render("~/Assets/admin/course/css/course.css")
 
-<h2 style="margin: 10px;font-size:40px">Lessons</h2>
-<div style="margin-left: 100px;margin-right:100px">
-    <table class="table table-bordered">
-        <tbody>
-            @foreach (var item in ViewBag.lessons)
-            {
-                <tr>
-                    <td><a href="../Lesson/Content?Id=@item.Id">@item.Name</td>
-                    <td>@item.Describtion</td>
-                    <td>
-                        <img src="https://image.flaticon.com/icons/png/512/65/65000.png" style="height: 20px;width: 20px" />
-                        @item.View
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+<div class="list_background background">
+    <div class="title__page" onclick="window.location.href = '@Url.Content("~/Quizz/Course")'">
+        <div class="title__arrow right"></div>
+        <h2>Lessons</h2>
+    </div>
+    <div class="list__container" id="lstQuizz">
+        <table class="table table-bordered tb__lst">
+            <tbody>
+                @foreach (var item in ViewBag.lessons)
+                {
+                    <tr class="fz-20">
+                        <td><a href="../Lesson/Content?Id=@item.Id">@item.Name</td>
+                        <td>@item.Describtion</td>
+                        <td>
+                            <img src="https://image.flaticon.com/icons/png/512/65/65000.png" style="height: 20px;width: 20px" />
+                            @item.View
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
 </div>

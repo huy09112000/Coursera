@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Mvc.Filters;
-
+using System.Web.Routing;
 
 namespace project.Filter
 {
@@ -22,11 +22,13 @@ namespace project.Filter
         {
             if (filterContext.Result == null|| filterContext.Result is HttpUnauthorizedResult)
             {
-                filterContext.Result = new ViewResult()
-                {
-                    ViewName = "Error"
-                };
-                
+                filterContext.Result = new RedirectToRouteResult(
+               new RouteValueDictionary
+               {
+                    { "controller", "Home" },
+                    { "action", "Index" }
+               });
+
             }
         }
     }

@@ -35,18 +35,18 @@ namespace project.Views.Home
 
 
         [HttpPost]
-        public ActionResult Verify(string email, string pass)
+        public ActionResult Verify(UserLoginDTO userLogin)
         {
             if (ModelState.IsValid)
             {
 
                 using (EducationDBContext db = new EducationDBContext())
                 {
-                    var user = (from u in db.Users where u.Email.Equals(email) && u.Password.Equals(pass) select u).FirstOrDefault();
+                    var user = (from u in db.Users where u.Email.Equals(userLogin.Email) && u.Password.Equals(userLogin.Password) select u).FirstOrDefault();
 
                     if(user != null)
                     {
-                        FormsAuthentication.SetAuthCookie(email, false);
+                        FormsAuthentication.SetAuthCookie(userLogin.Email, false);
                         UserDTO userDTO = AutoMap.Mapper.Map<UserDTO>(user);
                         Session["account"] = userDTO.Email;
                         Session["id"] = userDTO.Id;
