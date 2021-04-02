@@ -18,11 +18,11 @@
                     <input type="hidden" name="page" value="login-form">
                     <div>
                         <span> Email:</span>
-                        @Html.TextBoxFor(Model => Model.Email, htmlAttributes: new { placeholder = "Email", @class = "form-control" })
+                        @Html.TextBoxFor(Model => Model.Email, htmlAttributes: new { placeholder = "Email", @class = "form-control", @data_val = "true", @required = "required" })
                     </div>
                     <div>
                         <span class="pass"> Password:</span>
-                        @Html.TextBoxFor(Model => Model.Password, htmlAttributes: new { placeholder = "Password", @class = "form-control" })
+                        @Html.TextBoxFor(Model => Model.Password, htmlAttributes: new { placeholder = "Password", @class = "form-control", @data_val = "true", @required = "required" })
                     </div>
                     <input type="submit" value="Login">
                     <a href="https://localhost:44377/Login/ForgotPassword" class="hihi">Forgot Password?</a>

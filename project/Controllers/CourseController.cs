@@ -14,26 +14,7 @@ namespace project.Controllers
     public class CourseController : Controller
     {
         private EducationDBContext db = new EducationDBContext();
-        // GET: Course
-        //public bool checkAuthentication()
-        //{
-        //    string absolutepath = HttpContext.Request.Url.AbsolutePath;
-        //    //check authorize
-        //    User user = (User)Session["account"];
-        //    if (user == null)
-        //    {
-        //        return false;
-        //    }
-        //    foreach (var item in user.features)
-        //    {
-        //        if (item.Url.Equals(absolutepath))
-        //        {
-        //            //if equal
-        //            return true;
-        //        }
-        //    }
-        //    return false;
-        //}
+
 
         public ActionResult Course()
         {
@@ -53,5 +34,6 @@ namespace project.Controllers
             //    return View("Error");
             //}
         }
+
     }
 }
