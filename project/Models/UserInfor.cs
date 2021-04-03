@@ -9,13 +9,13 @@ namespace project.Models
 {
     [Table("UserInfors")]
     public class UserInfor
-    {
+    {    
         public UserInfor()
         {
             this.Courses = new HashSet<Course>();
         }
 
-        [Key]
+        [ForeignKey("User")]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         [MaxLength(50)]
