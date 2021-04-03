@@ -39,7 +39,6 @@ namespace project.Controllers
                     Name = o.Name
                 });
 
-
                 int pageSize = 6;
                 int pageNumber = (page ?? 1);
                 return View(lst.ToPagedList(pageNumber, pageSize));
