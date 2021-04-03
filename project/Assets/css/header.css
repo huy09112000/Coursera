@@ -26,6 +26,15 @@
     font-size: 20px;
     opacity: 0.6;
 }
+.search__dropdown {
+    width: 100%;
+    top: 40px;
+    border-radius: 20px;
+    background: #ffffffd6;
+}
+.search__dropdown__item {
+    border-radius: 20px;
+}
 .hover-btn-new, .navbar-right li a.hover-btn-new::before, .navbar-right li a.hover-btn-new::after {
     border-radius: 10px;
 }

@@ -1,4 +1,5 @@
 ﻿using project.DAL;
+using project.Filter;
 using project.Models;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,8 @@ using System.Web.Mvc;
 
 namespace project.Controllers
 {
+    [NitishAuthentication]
+    [FilterAuthorize(1)]
     public class CourseManagementController : Controller
     {
         EducationDBContext dba = new EducationDBContext();

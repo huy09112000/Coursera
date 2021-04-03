@@ -50,6 +50,7 @@ namespace project.Views.Home
                         UserDTO userDTO = AutoMap.Mapper.Map<UserDTO>(user);
                         Session["account"] = userDTO.Email;
                         Session["id"] = userDTO.Id;
+                        Session["role"] = userDTO.Role;
                         return RedirectToAction("Index", "Home");
                     }
                     else

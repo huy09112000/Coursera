@@ -1,7 +1,4 @@
-﻿@using project.Models
-@{
-    User login = new User();
-}
+﻿
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -101,44 +98,6 @@
                                             <a href="#" data-target="#pwdModal" data-toggle="modal">Forgot my password?</a>
                                         </div>
                                         <!--modal-->
-                                        <div id="pwdModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                                        <h1 class="text-center">Forgot Password?</h1>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <div class="col-md-12">
-                                                            <div class="panel panel-default">
-                                                                <div class="panel-body">
-                                                                    <div class="text-center">
-
-                                                                        <p>If you have forgotten your password you can reset it here.</p>
-                                                                        <div class="panel-body">
-                                                                            <fieldset>
-                                                                                @using (Html.BeginForm("ForgotPass", "Login", FormMethod.Post))
-                                                                                {
-                                                                                    <div class="form-group">
-                                                                                        <input class="form-control" placeholder="Email" type="email" required>
-                                                                                    </div>
-                                                                                    <input class="btn btn-lg btn-primary btn-block" value="Send My Password" type="submit">
-                                                                                }
-                                                                            </fieldset>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <div class="col-md-12">
-                                                            <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
                                         <!--end forgot password-->
                                         <button type="submit" class="btn btn-light btn-radius btn-brd grd1">
                                             Submit
@@ -147,7 +106,44 @@
                                     </div>
                                 </div>
                             </form>
+                            <div id="pwdModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                            <h1 class="text-center">Forgot Password?</h1>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="col-md-12">
+                                                <div class="panel panel-default">
+                                                    <div class="panel-body">
+                                                        <div class="text-center">
 
+                                                            <p>If you have forgotten your password you can reset it here.</p>
+                                                            <div class="panel-body">
+                                                                <fieldset>
+                                                                    @using (Html.BeginForm("ForgotPass", "Login", FormMethod.Post))
+                                                                    {
+                                                                        <div class="form-group">
+                                                                            <input class="form-control" name="forgot" placeholder="Email" type="email" required>
+                                                                        </div>
+                                                                        <input class="btn btn-lg btn-primary btn-block" value="Send My Password" type="submit">
+                                                                    }
+                                                                </fieldset>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <div class="col-md-12">
+                                                <button type="button" class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="tab-pane" id="Registration">
                             @using (Html.BeginForm("Register", "Login", FormMethod.Post))
@@ -207,16 +203,18 @@
             <div class="container-fluid">
                 @*@Html.ActionLink("<img src=\"~/ Assets / images / logo.png\" />","Index","Home",null,new {@class = "navbar-brand" })*@
                 <a class="navbar-brand" href="@Url.Action("Index","Home")">
-
                     <img src="~/Assets/images/logo.png" alt="" />
                 </a>
-                <form asp-controller="Lession" asp-action="Index" method="get">
-                    <div class="search-bar">
-                        <input type="text" style="width:300px" name="search" placeholder="search lesson here" />
-                        @*<input type="submit" value="Search" />*@
-                        <span><i class="fas fa-search"></i></span>
+                <div class="search-bar" id="dropdown-search" data-toggle="dropdown">
+                    <input type="text" style="width:300px" name="search" placeholder="search lesson here" onchange="searchBar(this)" />
+                    @*<input type="submit" value="Search" />*@
+                    <span><i class="fas fa-search"></i></span>
+                    <div class="dropdown-menu search__dropdown" id="search_dropdown" aria-labelledby="dropdown-search">
+                       
                     </div>
-                </form>
+                </div>
+
+
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars-host" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -232,23 +230,44 @@
                         @*<li class="nav-item"><a class="nav-link" href="../Home/Login">Login</a></li>
                             <li class="nav-item"><a class="nav-link" href="../Home/Register">Register</a></li>*@
                     </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
 
-                            @if (!string.IsNullOrEmpty(Session["account"]?.ToString()))
-                            {
-                                <a class="hover-btn-new log" href="@Url.Action("LogOut","Login")">
-                                    <span>Logout</span>
+
+                    @if (!string.IsNullOrEmpty(Session["account"]?.ToString()))
+                    {
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="nav-item dropdown">
+                                <a class="hover-btn-new log" href="#" id="dropdown-a" data-toggle="dropdown">
+                                    <span>Menu</span>
                                 </a>
-                            }
-                            else
-                            {
+                                <div class="dropdown-menu" aria-labelledby="dropdown-a">
+                                    <a class="dropdown-item" href="@Url.Action("LogOut","Login")">LogOut</a>
+                                    @if (Session["role"].ToString() == "1")
+                                    {
+                                        <a class="dropdown-item" href="@Url.Action("CreateCourse","CourseManagement")">Create Course </a>
+                                        <a class="dropdown-item" href="@Url.Action("CreateSubject","CourseManagement")">Create Subject </a>
+                                        <a class="dropdown-item" href="@Url.Action("CreateLession","CourseManagement")">Create Lesson </a>
+                                        <a class="dropdown-item" href="@Url.Action("CreateQiuzz","CourseManagement")">Create Quizz </a>
+                                    }
+
+
+                                </div>
+                            </li>
+                        </ul>
+
+                    }
+                    else
+                    {
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
                                 <a class="hover-btn-new log" href="#" data-toggle="modal" data-target="#login">
                                     <span>Login Now</span>
                                 </a>
-                            }
-                        </li>
-                    </ul>
+
+                            </li>
+                        </ul>
+
+                    }
+
                 </div>
             </div>
         </nav>
@@ -368,7 +387,21 @@
 
     @RenderSection("scripts", required: false)
     <script type="text/javascript">
-
+        function searchBar(ele) {
+            console.log(1, ele.value);
+            $('#search_dropdown').empty();
+            HTTPGet('/home/search', { key: ele.value }, searchResult)
+                .done(function () { })
+                .fail(function (jqxhr, setting, ex) { console.log(ex) });
+        }
+        function searchResult(res) {
+            let data = res.data;
+            let result = ``;
+            for (var i = 0; i < data.length; i++) {
+                result += ` <a class="dropdown-item search__dropdown__item" href="/Lesson/Content?Id=${data[i].Id}">Course Grid 2 </a>`;
+            }
+            $('#search_dropdown').append(result);
+        }
     </script>
 </body>
 </html>
