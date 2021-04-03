@@ -21,9 +21,23 @@
                         <p>@item.Describtion</p>
                     </div>
                     <div style="margin: 10px">
+
                         @for (int i = 0; i < @item.Rate; i++)
                         {
                             <i class='fas fa-star' style='font-size:20px; color: #FBDA00;'></i>
+                        }
+                        @using (Html.BeginForm("Subject", "Subject", FormMethod.Post))
+                        {
+                            <div>
+                                <input name="subjecId" type="hidden" value="@item.Id"/>
+                                <input name="new_rating_star" type="radio" class="rating_star" value="1" />
+                                <input name="new_rating_star" type="radio" class="rating_star" value="2" />
+                                <input name="new_rating_star" type="radio" class="rating_star" value="3" />
+                                <input name="new_rating_star" type="radio" class="rating_star" value="4" />
+                                <input name="new_rating_star" type="radio" class="rating_star" value="5" />
+                            </div>
+                            <br />
+                            <input type="submit" value="submit rate star">
                         }
                     </div>
                     <div style="margin: 10px">
