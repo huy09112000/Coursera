@@ -123,33 +123,68 @@ namespace project.Controllers
         }
         [HttpPost]
         [ActionName("result")]
-        public ActionResult AfterSubmit(List<AnswerOnSubmitDTO> data, int id)
+        public ActionResult AfterSubmit(List<AnswerOnSubmitDTO> data, int id, string time)
         {
             int userId = Convert.ToInt32(Session["id"]);
             int correctAns = 0;
+            double pointTotalCorrect = 0;
             double pointTotal = 0;
             data = data != null ? data : new List<AnswerOnSubmitDTO>();
             PointAfterSubmitDTO pointAfter;
+            List<ResultDTO> ResultDTO = new List<ResultDTO>();
+            double timeQuizz;
+            double timeRemaind;
+            double timeDo;
+            List<QuestionsGivenDTO> lstDTO= new List<QuestionsGivenDTO>();
+
+            //data handle
             using (EducationDBContext db = new EducationDBContext())
             {
+
+                //get list ques
+                var lst = (from qs in db.Questions where qs.CurrentQuizzId == id orderby qs.Id select qs).ToList();
+                 lstDTO = AutoMap.Mapper.Map<List<QuestionsGivenDTO>>(lst);
+
+                //time handle
+                string[] str = time.Split(':');
+                timeQuizz = (from q in db.Quizzs where q.Id == id select q).First().time * 60*60;
+                timeRemaind = int.Parse(str[0])*60 + int.Parse(str[1]);
+                timeDo = timeQuizz - timeRemaind;
+                int currentIdQues = -1;
+                //check question
                 foreach (AnswerOnSubmitDTO item in data)
                 {
-                    var ans = (from an in db.Answers where an.Id == item.Ans && an.IsCorrect select an).FirstOrDefault();
+                    var ansCorrect = (from an in db.Answers where an.CurrentQuestionId == item.Ques && an.IsCorrect select an).First();
                     double? point = (from q in db.Questions where q.Id == item.Ques select q).FirstOrDefault().Point;
-                    pointTotal += ans != null ? point.HasValue?point.Value:0 : 0;
-                    correctAns += ans != null ? 1 : 0;
+                    if(currentIdQues != item.Ques)
+                    {
+                        pointTotal += point.HasValue ? point.Value : 0;
+                        currentIdQues = item.Ques;
+                    }
+                    if (ansCorrect.Id == item.Ans)
+                    {
+                        pointTotalCorrect += point.HasValue ? point.Value : 0;
+                        correctAns += 1;
+                    }
+                    ResultDTO.Add(new ResultDTO()
+                    {
+                        AnsChoosed = item.Ans,
+                        CorrectAns = ansCorrect.Id,
+                        QuesId = item.Ques,
+                        QuizzId = id,
+                    });
                 }
                 UserInfor user = (from u in db.UserInfors where u.Id == userId select u).FirstOrDefault();
                 Quizz quizz = (from q in db.Quizzs where q.Id == id select q).FirstOrDefault();
-                 pointAfter = new PointAfterSubmitDTO()
+                pointAfter = new PointAfterSubmitDTO()
                 {
                     Quizz = quizz,
-                    Score = pointTotal,
+                    Score = pointTotalCorrect,
                     UserInfor = user,
                     CorrectAnswer = correctAns
                 };
                 Point score = (from p in db.points where p.UserInfor.Id == userId && p.Quizz.Id == id select p).FirstOrDefault();
-                if(score != null)
+                if (score != null)
                 {
                     score.CorrectAnswer = pointAfter.CorrectAnswer;
                     score.Quizz = pointAfter.Quizz;
@@ -164,11 +199,14 @@ namespace project.Controllers
             }
             return Json(new
             {
-               correct = correctAns,
-               point = pointTotal,
-               id = id
+                lisQues=lstDTO,
+                data = ResultDTO,
+                timetotal = timeQuizz,
+                timeDo = timeDo,
+                point= pointTotalCorrect,
+                pointTotal= pointTotal
             },
-            JsonRequestBehavior.AllowGet);
+            JsonRequestBehavior.AllowGet) ;
         }
         [ActionName("examresult")]
         public ActionResult AfterExam(int id)

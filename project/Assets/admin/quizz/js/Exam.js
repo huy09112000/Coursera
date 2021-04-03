@@ -1,4 +1,4 @@
-﻿
+﻿let timeleft;
 const WARNING_THRESHOLD = 10;
 const ALERT_THRESHOLD = 5;
 
@@ -69,7 +69,7 @@ $(document).ready(function () {
 
 function startExam(id, time) {
     const TIME_LIMIT = $('.quizz__time').children()[1].id.split("-")[1] * 60 * 60;
-    let timeLeft = TIME_LIMIT;
+    timeLeft = TIME_LIMIT;
 
     //animation handle
     $('#start__exam').on("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function (event) {
@@ -95,7 +95,7 @@ function startExam(id, time) {
     //get data from serve
     HTTPGet('/quizz/exam', { quizzId: id }, initTesting)
         .done(function () {
-            startTimer(timeLeft, TIME_LIMIT);
+            startTimer(TIME_LIMIT);
         })
         .fail(function (jqxhr, setting, ex) { console.log(ex) });
 }
@@ -151,20 +151,52 @@ function submitExam(quizzId) {
     let result = [];
     let submit_result = $('.carouser_answer').children();
     submit_result.each(function (index) {
+        let lstId = $(this)[0].id.split("-");
         if ($(this).children()[0].checked) {
-            let lstId = $(this)[0].id.split("-");
             result.push({ ans: lstId[1], ques: lstId[2] });
+        } else {
+            result.push({ ans: -1, ques: lstId[2] })
         }
     });
+    let remainTime = document.getElementById("base-timer-label").innerHTML
+    HTTPPost('/quizz/result', { data: result, id: quizzId, time: remainTime }, function (res) {
+        console.log(res);
+        let data = res.data;
+        let timetotal = res.timetotal;
+        let timeDo = res.timeDo;
+        let lisQues = res.lisQues;
+        let point = res.point;
+        let pointTotal = res.pointTotal;
 
-    HTTPPost('/quizz/result', { data: result, id: quizzId }).done(window.location.href = "/quizz/examresult/" +quizzId);
+        for (var i = 0; i < data.length; i++) {
+            let qesId = "#qes-" + data[i].QuesId;
+            $(qesId).addClass('disable_radio');
+            $(qesId).children()[1].style.display = 'none';
+            //document.getElementById("ans-" + data[i].CorrectAns + "-" + data[i].QuesId).style.background = "red";
+            //document.getElementById("ans-" + data[i].AnsChoosed + "-" + data[i].QuesId).style.background = "green";
+            console.log($('#ans-' + data[i].CorrectAns + '-' + data[i].QuesId));
+            $('#ans-' + data[i].CorrectAns + '-' + data[i].QuesId).addClass("bg-red");
+            $('#ans-' + data[i].AnsChoosed + '-' + data[i].QuesId).addClass("bg-green");
+        }
+        let template = `  <div class="submit__button transformVisible" id="totalTime" style="width: 265px;">
+            <span>Total time: ${formatTime(timetotal)}</span>
+        </div>
+        <div class="submit__button transformVisible" id="timeDo" style="left: 380px;width: 265px;">
+            <span>Time do: ${formatTime(timeDo)}</span>
+        </div>
+ <div class="submit__button transformVisible" id="timeDo" style="left: 650px;width: 265px;">
+            <span>Point: ${point}/${pointTotal}</span>
+        </div>`;
+        $('#lstExam').append(template);
+        onTimesUp();
+    });
 }
 
 function onTimesUp() {
     clearInterval(timerInterval);
 }
 
-function startTimer(timeLeft, TIME_LIMIT) {
+function startTimer(TIME_LIMIT) {
     let timePassed = 0;
 
     timerInterval = setInterval(() => {
@@ -173,8 +205,8 @@ function startTimer(timeLeft, TIME_LIMIT) {
         document.getElementById("base-timer-label").innerHTML = formatTime(
             timeLeft
         );
-        setCircleDasharray(timeLeft, TIME_LIMIT);
-        setRemainingPathColor(timeLeft);
+        setCircleDasharray(TIME_LIMIT);
+        setRemainingPathColor();
 
         if (timeLeft === 0) {
             onTimesUp();
@@ -193,7 +225,7 @@ function formatTime(time) {
     return `${minutes}:${seconds}`;
 }
 
-function setRemainingPathColor(timeLeft) {
+function setRemainingPathColor() {
     const { alert, warning, info } = COLOR_CODES;
     if (timeLeft <= alert.threshold) {
         document
@@ -212,14 +244,14 @@ function setRemainingPathColor(timeLeft) {
     }
 }
 
-function calculateTimeFraction(timeLeft, TIME_LIMIT) {
+function calculateTimeFraction(TIME_LIMIT) {
     const rawTimeFraction = timeLeft / TIME_LIMIT;
     return rawTimeFraction - (1 / TIME_LIMIT) * (1 - rawTimeFraction);
 }
 
-function setCircleDasharray(timeLeft, TIME_LIMIT) {
+function setCircleDasharray(TIME_LIMIT) {
     const circleDasharray = `${(
-        calculateTimeFraction(timeLeft, TIME_LIMIT) * FULL_DASH_ARRAY
+        calculateTimeFraction(TIME_LIMIT) * FULL_DASH_ARRAY
     ).toFixed(0)} 283`;
     document
         .getElementById("base-timer-path-remaining")

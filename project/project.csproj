@@ -191,6 +191,7 @@
     <Compile Include="Models\DTO\AnswerOnSubmitDTO.cs" />
     <Compile Include="Models\DTO\PointAfterSubmitDTO.cs" />
     <Compile Include="Models\DTO\QuizzResultDTO.cs" />
+    <Compile Include="Models\DTO\ResultDTO.cs" />
     <Compile Include="Models\DTO\UserDTO.cs" />
     <Compile Include="Models\DTO\UserLoginDTO.cs" />
     <Compile Include="Models\Feature.cs" />

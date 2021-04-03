@@ -488,3 +488,12 @@ background-image: linear-gradient(315deg, #7f53ac 0%, #647dee 74%);*/
     background-color: #aed1e3;
     background-size: 16px 16px;
 }
+.disable_radio{
+    pointer-events:none;
+}
+.bg-red{
+    background:red !important;
+}
+.bg-green{
+    background:green !important;
+}
