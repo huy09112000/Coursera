@@ -25,7 +25,7 @@ namespace project.Models
         public int CurentSubjectId { get; set; }
         public Subject Subject { get; set; }
 
-        public Boolean Learned { get; set; }
+        public bool? Learned { get; set; }
         public virtual ICollection<Quizz> Quizzs { get; set; }
     }
 }

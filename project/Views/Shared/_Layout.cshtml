@@ -106,54 +106,48 @@
                                     </div>
                                 </div>
                             </form>
-                            <div id="pwdModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                            <h1 class="text-center">Forgot Password?</h1>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="col-md-12">
-                                                <div class="panel panel-default">
-                                                    <div class="panel-body">
-                                                        <div class="text-center">
+                        </div>
+                        <div id="pwdModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                        <h1 class="text-center">Forgot Password?</h1>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="col-md-12">
+                                            <div class="panel panel-default">
+                                                <div class="panel-body">
+                                                    <div class="text-center">
 
-                                                                        <p>If you have forgotten your password you can reset it here.</p>
-                                                                        <div class="panel-body">
-                                                                            <fieldset>
-                                                                                @using (Html.BeginForm("ForgotPass", "Login", FormMethod.Post))
-                                                                                {
-                                                                                    <div class="form-group">
-                                                                                        <input class="form-control" placeholder="Email" type="email" required>
-                                                                                    </div>
-                                                                                    <input class="btn btn-lg btn-primary btn-block" value="Send My Password" type="submit">
-                                                                                }
-                                                                            </fieldset>
-                                                                        </div>
+                                                        <p>If you have forgotten your password you can reset it here.</p>
+                                                        <div class="panel-body">
+                                                            <fieldset>
+                                                                @using (Html.BeginForm("ForgotPass", "Login", FormMethod.Post))
+                                                                {
+                                                                    <div class="form-group">
+                                                                        <input class="form-control" placeholder="Email" type="email" required>
                                                                     </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <div class="col-md-12">
-                                                            <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+                                                                    <input class="btn btn-lg btn-primary btn-block" value="Send My Password" type="submit">
+                                                                }
+                                                            </fieldset>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <!--end forgot password-->
-                                        <button type="submit" class="btn btn-light btn-radius btn-brd grd1">
-                                            Submit
-                                        </button>
-
+                                    </div>
+                                    <div class="modal-footer">
+                                        <div class="col-md-12">
+                                            <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+                                        </div>
                                     </div>
                                 </div>
-                            </form>
-                            @*}*@
+                            </div>
                         </div>
+
+
+
                         <div class="tab-pane" id="Registration">
                             @using (Html.BeginForm("Register", "Login", FormMethod.Post))
                             {
@@ -219,7 +213,7 @@
                     @*<input type="submit" value="Search" />*@
                     <span><i class="fas fa-search"></i></span>
                     <div class="dropdown-menu search__dropdown" id="search_dropdown" aria-labelledby="dropdown-search">
-                       
+
                     </div>
                 </div>
 

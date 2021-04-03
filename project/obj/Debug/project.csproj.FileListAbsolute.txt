@@ -280,8 +280,6 @@ C:\Users\ADMIN\Source\Repos\SE1414-C--Webform-Team3\project\obj\Debug\project.cs
 C:\Users\ADMIN\Source\Repos\SE1414-C--Webform-Team3\project\obj\Debug\project.csproj.CopyComplete
 C:\Users\ADMIN\Source\Repos\SE1414-C--Webform-Team3\project\obj\Debug\project.dll
 C:\Users\ADMIN\Source\Repos\SE1414-C--Webform-Team3\project\obj\Debug\project.pdb
-D:\homework\major\c#_On_Class\project\SE1414-C--Webform-Team3\project\obj\Debug\project.Migrations.renew.resources
-D:\homework\major\c#_On_Class\project\SE1414-C--Webform-Team3\project\obj\Debug\project.csproj.GenerateResource.cache
 D:\Desktop\FPT\semester 5\.Net\Final_project\SE1414-C--Webform-Team3\project\bin\project.dll.config
 D:\Desktop\FPT\semester 5\.Net\Final_project\SE1414-C--Webform-Team3\project\bin\project.dll
 D:\Desktop\FPT\semester 5\.Net\Final_project\SE1414-C--Webform-Team3\project\bin\project.pdb
@@ -389,3 +387,5 @@ D:\Desktop\FPT\semester 5\.Net\Final_project\SE1414-C--Webform-Team3\project\obj
 D:\Desktop\FPT\semester 5\.Net\Final_project\SE1414-C--Webform-Team3\project\obj\Debug\project.csproj.CopyComplete
 D:\Desktop\FPT\semester 5\.Net\Final_project\SE1414-C--Webform-Team3\project\obj\Debug\project.dll
 D:\Desktop\FPT\semester 5\.Net\Final_project\SE1414-C--Webform-Team3\project\obj\Debug\project.pdb
+D:\homework\major\c#_On_Class\project\SE1414-C--Webform-Team3\project\obj\Debug\project.Migrations.afterchangeonclass.resources
+D:\homework\major\c#_On_Class\project\SE1414-C--Webform-Team3\project\obj\Debug\project.csproj.GenerateResource.cache

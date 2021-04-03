@@ -22,44 +22,48 @@
     <div class="list__container" id="lstQuizz">
         @foreach (Subject item in Model)
         {
-            <div class="item__quizz" id="@item.Id-subject" onclick="window.location.href='/Lesson/Lesson?CurentSubjectId=@item.Id'">
-                <div class="quizz__image">
-                    <img src="@Url.Content(item.Image)" />
-                </div>
-                <div class="quizz__infor">
-                    <div class="quizz__header">
-                        <div class="quizz__name">
-                            <h1>@item.Name</h1>
-                        </div>
-
-                    </div>
-                    <div style="margin: 10px">
-
-                        @for (int i = 0; i < @item.Rate; i++)
-                        {
-                            <i class='fas fa-star' style='font-size:20px; color: #FBDA00;'></i>
-                        }
-                        @using (Html.BeginForm("Subject", "Subject", FormMethod.Post))
-                        {
-                            <div>
-                                <input name="subjecId" type="hidden" value="@item.Id"/>
-                                <input name="new_rating_star" type="radio" class="rating_star" value="1" />
-                                <input name="new_rating_star" type="radio" class="rating_star" value="2" />
-                                <input name="new_rating_star" type="radio" class="rating_star" value="3" />
-                                <input name="new_rating_star" type="radio" class="rating_star" value="4" />
-                                <input name="new_rating_star" type="radio" class="rating_star" value="5" />
-                            </div>
-                            <br />
-                            <input type="submit" value="submit rate star">
-                        }
-                    </div>
-                    <div class="rating__star">
-                        @*<img src="@Url.Content("~/Assets/images/rating-star-active.png")"/>*@
-                        <div class="star__active" style="width:@item.Rate%;"></div>
-                        <img src="@Url.Content("~/Assets/images/rating-star.png")" />
-                    </div>
-                </div>
+        <div class="item__quizz" id="@item.Id-subject" onclick="window.location.href='/Lesson/Lesson?CurentSubjectId=@item.Id'">
+            <div class="quizz__image">
+                <img src="@Url.Content(item.Image)" />
             </div>
+            <div class="quizz__infor">
+                <div class="quizz__header">
+                    <div class="quizz__name">
+                        <h1>@item.Name</h1>
+                    </div>
+
+                </div>
+                @*<div style="margin: 10px">
+
+                @for (int i = 0; i < @item.Rate; i++)
+                {
+                    <i class='fas fa-star' style='font-size:20px; color: #FBDA00;'></i>
+                }
+
+            </div>*@
+            <div class="rating__star">
+                @using (Html.BeginForm("Subject", "Subject", FormMethod.Post))
+                {
+                    <div style=" position: absolute; top: -40px; left: 0;">
+                        <input name="subjecId" type="hidden" value="@item.Id" />
+                        <input name="new_rating_star" type="radio" class="rating_star" value="1" />
+                        <input name="new_rating_star" type="radio" class="rating_star" value="2" />
+                        <input name="new_rating_star" type="radio" class="rating_star" value="3" />
+                        <input name="new_rating_star" type="radio" class="rating_star" value="4" />
+                        <input name="new_rating_star" type="radio" class="rating_star" value="5" />
+                    </div>
+                    <br />
+                    <input type="submit" value="submit rate star" style=" position: absolute; top: -17px; left: 0; border-radius: 20px; background: orange; color: white; width: 84px; height: 25px; text-align: center; font-size: 10px;">
+                }
+
+                <div class="star__active" style="width:@item.Rate%;"></div>
+                <img src="@Url.Content("~/Assets/images/rating-star.png")" />
+
+            </div>
+            </div>
+           
+        </div>
+          
         }
     </div>
     @Html.PagedListPager(pagedList, page => Url.Action("Subject",

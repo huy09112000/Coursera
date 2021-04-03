@@ -3,7 +3,7 @@ namespace project.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class abc : DbMigration
+    public partial class afterchangeonclass : DbMigration
     {
         public override void Up()
         {
@@ -62,6 +62,7 @@ namespace project.Migrations
                         View = c.Int(),
                         Content = c.String(),
                         CurentSubjectId = c.Int(nullable: false),
+                        Learned = c.Boolean(),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Subjects", t => t.CurentSubjectId, cascadeDelete: true)
@@ -102,7 +103,7 @@ namespace project.Migrations
                 "dbo.UserInfors",
                 c => new
                     {
-                        Id = c.Int(nullable: false, identity: true),
+                        Id = c.Int(nullable: false),
                         Name = c.String(maxLength: 50),
                         DOB = c.DateTime(),
                         Phone = c.Int(),

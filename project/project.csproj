@@ -180,17 +180,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="MappingProfile.cs" />
-    <Compile Include="Migrations\202104012107313_renew.cs" />
-    <Compile Include="Migrations\202104012107313_renew.Designer.cs">
-      <DependentUpon>202104012107313_renew.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202104030220157_DBcontext.cs" />
-    <Compile Include="Migrations\202104030220157_DBcontext.Designer.cs">
-      <DependentUpon>202104030220157_DBcontext.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202104030226236_abc.cs" />
-    <Compile Include="Migrations\202104030226236_abc.Designer.cs">
-      <DependentUpon>202104030226236_abc.cs</DependentUpon>
+    <Compile Include="Migrations\202104030421424_after-change-on-class.cs" />
+    <Compile Include="Migrations\202104030421424_after-change-on-class.Designer.cs">
+      <DependentUpon>202104030421424_after-change-on-class.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Answer.cs" />
@@ -468,14 +460,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202104012107313_renew.resx">
-      <DependentUpon>202104012107313_renew.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202104030220157_DBcontext.resx">
-      <DependentUpon>202104030220157_DBcontext.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202104030226236_abc.resx">
-      <DependentUpon>202104030226236_abc.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202104030421424_after-change-on-class.resx">
+      <DependentUpon>202104030421424_after-change-on-class.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
