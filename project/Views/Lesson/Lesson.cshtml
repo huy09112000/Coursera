@@ -25,6 +25,16 @@
                             <img src="https://image.flaticon.com/icons/png/512/65/65000.png" style="height: 20px;width: 20px" />
                             @item.View
                         </td>
+                         <td>
+                        @if (item.Learned == true)
+                        {
+                            <div>Learned</div>
+                        }
+                        else
+                        {
+                            <div></div>
+                        }
+                    </td>
                     </tr>
                 }
             </tbody>

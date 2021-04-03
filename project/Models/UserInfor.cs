@@ -9,7 +9,7 @@ namespace project.Models
 {
     [Table("UserInfors")]
     public class UserInfor
-    {
+    {    
         public UserInfor()
         {
             this.Courses = new HashSet<Course>();

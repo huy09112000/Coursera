@@ -184,6 +184,14 @@
     <Compile Include="Migrations\202104012107313_renew.Designer.cs">
       <DependentUpon>202104012107313_renew.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202104030220157_DBcontext.cs" />
+    <Compile Include="Migrations\202104030220157_DBcontext.Designer.cs">
+      <DependentUpon>202104030220157_DBcontext.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104030226236_abc.cs" />
+    <Compile Include="Migrations\202104030226236_abc.Designer.cs">
+      <DependentUpon>202104030226236_abc.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Answer.cs" />
     <Compile Include="Models\Course.cs" />
@@ -462,6 +470,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202104012107313_renew.resx">
       <DependentUpon>202104012107313_renew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104030220157_DBcontext.resx">
+      <DependentUpon>202104030220157_DBcontext.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104030226236_abc.resx">
+      <DependentUpon>202104030226236_abc.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
