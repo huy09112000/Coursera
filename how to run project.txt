@@ -1,0 +1,4 @@
+open web.config
+config connectionString of current computer
+turn on package manager console
+run update-database
