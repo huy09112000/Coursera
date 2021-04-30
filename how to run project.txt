@@ -1,4 +1,6 @@
-open web.config
+-open web.config
 config connectionString of current computer
 turn on package manager console
 run update-database
+
+- run script.sql to input data for database

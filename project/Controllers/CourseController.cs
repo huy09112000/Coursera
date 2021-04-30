@@ -14,12 +14,8 @@ namespace project.Controllers
     public class CourseController : Controller
     {
         private EducationDBContext db = new EducationDBContext();
-
-
         public ActionResult Course()
         {
-            //if (checkAuthentication())
-            //{
             var course = (from s in db.Courses select s).ToList();
             foreach (Course item in course)
             {
@@ -27,12 +23,6 @@ namespace project.Controllers
             }
             ViewBag.courses = course;
             return View();
-            //}
-            //else
-            //{
-            //    ViewBag.MyMessage = "You need to login as a Teacher account or Student account to have permission to acces this page";
-            //    return View("Error");
-            //}
         }
 
     }
